@@ -1,10 +1,20 @@
 import StartBackground from '@/app/common/hocs/stars-bg';
+import Footer from './footer';
+import PointsBar from './home/PointsBar';
+import ScoreBar from './home/ScoreBar';
+import ClickPad from './home/ClickPad';
 
 export default function Home() {
     return (
         <StartBackground>
             <div>
-                <h2 className="text-2xl text-white text-center">Moonly Coin</h2>
+                <PointsBar />
+
+                <ScoreBar />
+
+                <ClickPad />
+
+                <Footer />
             </div>
         </StartBackground>
     );

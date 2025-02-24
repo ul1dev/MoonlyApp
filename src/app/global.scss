@@ -8,6 +8,7 @@ html,
 body,
 #__next {
     height: 100%;
+    font-family: var(--font-inter);
 }
 
 input {
@@ -17,15 +18,3 @@ input {
 li {
     list-style-type: none;
 }
-
-// colors
-$mainbackground: #fff;
-$scrollThumb: #dbdbdb;
-$scrollThumbHover: #cacaca;
-
-// sizes
-$maxWidth: 1920px;
-$minWidth: 320px;
-$headerHeight: 80px;
-$headerHeight640: 65px;
-$headerHeight425: 50px;
