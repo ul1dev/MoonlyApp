@@ -1,7 +1,7 @@
 'use client';
 
 import { useMediaQuery } from '../common/hooks/use-media-query';
-import PixelCoinIcon from './icons/PixelCoin';
+import PixelCoinIcon from '../common/share/icons/PixelPurpleCoin';
 
 export default function ScoreBar() {
     const windowWidth = useMediaQuery();

@@ -1,4 +1,4 @@
-export default function PixelCoinIcon({ width = 50, height = 50 }) {
+export default function PixelPurpleCoinIcon({ width = 50, height = 50 }) {
     return (
         <svg
             width={width}

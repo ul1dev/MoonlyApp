@@ -45,11 +45,13 @@ export default function Footer() {
                     color={pathname === '/nft' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
-            <Link href="/shop">
-                <ShopIcon
-                    width={shopWidth}
-                    height={shopHeight}
-                    color={pathname === '/shop' ? '#FFFFFF' : '#4E4E4E'}
+            <Link href="/profit">
+                <CoinsIcon
+                    width={coinsWidth}
+                    height={coinsHeight}
+                    color={pathname === '/profit' ? '#CACACA' : '#313131'}
+                    strokeColor={pathname === '/profit' ? '#FFFFFF' : '#4E4E4E'}
+                    strokeWidth={5}
                 />
             </Link>
             <Link href="/">
@@ -59,13 +61,11 @@ export default function Footer() {
                     color={pathname === '/' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
-            <Link href="/profit">
-                <CoinsIcon
-                    width={coinsWidth}
-                    height={coinsHeight}
-                    color={pathname === '/profit' ? '#CACACA' : '#313131'}
-                    strokeColor={pathname === '/profit' ? '#FFFFFF' : '#4E4E4E'}
-                    strokeWidth={5}
+            <Link href="/shop">
+                <ShopIcon
+                    width={shopWidth}
+                    height={shopHeight}
+                    color={pathname === '/shop' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
             <Link href="/profile">

@@ -9,11 +9,8 @@ export default function Home() {
         <StartBackground>
             <div>
                 <PointsBar />
-
                 <ScoreBar />
-
                 <ClickPad />
-
                 <Footer />
             </div>
         </StartBackground>

@@ -1,5 +1,5 @@
 import './global.scss';
-import { Inter } from 'next/font/google';
+import { Inter, Rubik_Mono_One } from 'next/font/google';
 import localFont from 'next/font/local';
 
 const inter = Inter({
@@ -20,6 +20,12 @@ const rubikOne = localFont({
     display: 'swap',
 });
 
+const rubikMonoOne = Rubik_Mono_One({
+    weight: '400',
+    variable: '--font-rubik-mono-one',
+    display: 'swap',
+});
+
 export const metadata = {
     title: 'Moonly App',
     description: "Start now so you won't regret it later...",
@@ -33,7 +39,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} ${rubikOne.variable} min-w-80 max-w-3xl mx-auto`}
+                className={`${inter.variable} ${rubikOne.variable} ${rubikMonoOne.variable} min-w-80 max-w-3xl mx-auto`}
             >
                 {children}
             </body>

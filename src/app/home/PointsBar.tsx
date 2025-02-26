@@ -1,4 +1,16 @@
+'use client';
+
+import { useMediaQuery } from '../common/hooks/use-media-query';
+import BoostsIcon from '../common/share/icons/Boosts';
+import PixelGreenCoinIcon from '../common/share/icons/PixelGreenCoin';
+
 export default function PointsBar() {
+    const windowWidth = useMediaQuery();
+
+    const gpCoinSize = windowWidth < 440 ? 10 : windowWidth < 680 ? 12 : 14;
+    const boostsWidth = windowWidth < 440 ? 9 : windowWidth < 680 ? 10.5 : 12;
+    const boostsHeight = windowWidth < 440 ? 12 : windowWidth < 680 ? 14 : 16;
+
     return (
         <div className="flex justify-center max-[340px]:gap-1 max-[400px]:gap-4 max-[440px]:gap-6 max-[540px]:gap-8 max-[680px]:gap-12 gap-16 max-[500px]:py-8 py-12">
             <div className="flex items-center justify-center relative max-[440px]:min-w-24 max-[440px]:min-h-16 max-[500px]:min-w-28 max-[500px]:min-h-20 max-[680px]:min-w-32 max-[680px]:min-h-[85px] min-w-40 min-h-24">
@@ -7,8 +19,12 @@ export default function PointsBar() {
                     <div className="text-white max-[680px]:text-2xl text-4xl font-black">
                         10
                     </div>
-                    <div className="text-[#b1b1b1] max-[440px]:text-xs max-[680px]:text-sm text-base font-semibold">
-                        Boosts
+                    <div className="flex items-center max-[440px]:gap-[1.5px] max-[680px]:gap-[2px] gap-[3px] -ml-1.5">
+                        <BoostsIcon width={boostsWidth} height={boostsHeight} />
+
+                        <div className="text-[#b1b1b1] max-[440px]:text-xs max-[680px]:text-sm text-base font-semibold">
+                            Boosts
+                        </div>
                     </div>
                 </div>
             </div>
@@ -29,8 +45,15 @@ export default function PointsBar() {
                     <div className="text-white max-[680px]:text-2xl text-4xl font-black">
                         13k
                     </div>
-                    <div className="text-[#b1b1b1] max-[440px]:text-xs max-[680px]:text-sm text-base font-semibold">
-                        Points
+                    <div className="flex items-center max-[440px]:gap-[1.5px] max-[680px]:gap-[2px] gap-[3px] -ml-1.5">
+                        <PixelGreenCoinIcon
+                            width={gpCoinSize}
+                            height={gpCoinSize}
+                        />
+
+                        <div className="text-[#b1b1b1] max-[440px]:text-xs max-[680px]:text-sm text-base font-semibold">
+                            Coins
+                        </div>
                     </div>
                 </div>
             </div>
