@@ -3,8 +3,9 @@ import Footer from '../footer';
 import UserInfo from './UserInfo';
 import UserBalance from './Balance';
 import UserShare from './UserShare';
+import TgStarSystem from '../common/share/icons/TgStarSystem';
 
-export default function Home() {
+export default function Profile() {
     return (
         <StartBackground>
             <div>
@@ -12,6 +13,7 @@ export default function Home() {
                 <UserBalance />
                 <UserShare />
                 <Footer />
+                <TgStarSystem />
             </div>
         </StartBackground>
     );

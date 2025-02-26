@@ -37,7 +37,7 @@ export default function Footer() {
     const profileHeight = getScaledSize(48);
 
     return (
-        <div className="bg-black flex justify-between gap-3 rounded-2xl py-5 max-sm:px-8 px-12 items-center fixed bottom-0 w-full min-w-80 max-w-3xl">
+        <div className="bg-black flex justify-between gap-3 rounded-2xl py-5 max-sm:px-8 px-12 items-center fixed bottom-0 w-full min-w-80 max-w-3xl z-[1000]">
             <Link href="/nft">
                 <NftIcon
                     width={nftWidth}
