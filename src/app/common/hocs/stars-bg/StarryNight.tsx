@@ -31,7 +31,7 @@ const StarryNight = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        <div>
+        <div className="h-full">
             <div className="fixed inset-0 bg-black overflow-hidden">
                 {stars.map((star) => (
                     <Star
@@ -44,7 +44,9 @@ const StarryNight = ({ children }: { children: React.ReactNode }) => {
                     />
                 ))}
             </div>
-            <div className="relative top-0 left-0 z-50">{children}</div>
+            <div className="relative top-0 left-0 z-50 h-full w-full">
+                {children}
+            </div>
         </div>
     );
 };

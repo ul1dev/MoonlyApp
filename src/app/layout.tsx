@@ -1,6 +1,8 @@
-import './global.scss';
 import { Inter, Rubik_Mono_One } from 'next/font/google';
 import localFont from 'next/font/local';
+
+import './global.scss';
+import 'animate.css';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
