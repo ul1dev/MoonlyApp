@@ -6,9 +6,11 @@ import BoostsIcon from '../common/share/icons/Boosts';
 import PixelGreenCoinIcon from '../common/share/icons/PixelGreenCoin';
 import PixelPurpleCoinIcon from '../common/share/icons/PixelPurpleCoin';
 import TgStar from '../common/share/icons/TgStar';
+import { useTranslate } from '../common/hooks/useTranslate';
 
 export default function UserBalance() {
     const windowWidth = useMediaQuery();
+    const { t } = useTranslate();
 
     const iconsSize =
         windowWidth < 380
@@ -32,7 +34,9 @@ export default function UserBalance() {
         <div className="max-[380px]:px-6 max-[440px]:px-8 px-12 flex flex-col gap-y-3">
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
-                    <p className="text-[#B2B2B2] font-medium">Stars</p>
+                    <p className="text-[#B2B2B2] font-medium">
+                        {t('profile.stars')}
+                    </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[440px]:-mt-0.5 -mt-1">
@@ -42,13 +46,15 @@ export default function UserBalance() {
                 </div>
                 <div className="bg-white rounded-3xl cursor-pointer -mt-1">
                     <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px]">
-                        Top Up
+                        {t('profile.topUp')}
                     </p>
                 </div>
             </div>
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
-                    <p className="text-[#B2B2B2] font-medium">Boosts</p>
+                    <p className="text-[#B2B2B2] font-medium">
+                        {t('profile.boosts')}
+                    </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
@@ -59,14 +65,16 @@ export default function UserBalance() {
                 <Link href="/shop">
                     <div className="border-2 border-white rounded-3xl cursor-pointer -mt-1">
                         <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px] text-white">
-                            Buy
+                            {t('profile.buy')}
                         </p>
                     </div>
                 </Link>
             </div>
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
-                    <p className="text-[#B2B2B2] font-medium">Coins</p>
+                    <p className="text-[#B2B2B2] font-medium">
+                        {t('profile.coins')}
+                    </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
@@ -80,14 +88,16 @@ export default function UserBalance() {
                 <Link href="/shop">
                     <div className="border-2 border-white rounded-3xl cursor-pointer -mt-1">
                         <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px] text-white">
-                            Buy
+                            {t('profile.buy')}
                         </p>
                     </div>
                 </Link>
             </div>
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
-                    <p className="text-[#B2B2B2] font-medium">Points</p>
+                    <p className="text-[#B2B2B2] font-medium">
+                        {t('profile.points')}
+                    </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
@@ -101,7 +111,7 @@ export default function UserBalance() {
                 <Link href="/">
                     <div className="border-2 border-white rounded-3xl cursor-pointer -mt-1">
                         <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px] text-white">
-                            Farm
+                            {t('profile.farm')}
                         </p>
                     </div>
                 </Link>

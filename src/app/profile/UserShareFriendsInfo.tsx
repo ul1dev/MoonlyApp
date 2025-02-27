@@ -2,12 +2,13 @@
 
 import { useModal } from '../common/hocs/info-modal';
 import { useMediaQuery } from '../common/hooks/use-media-query';
-import { infoTexts } from '../common/locale/info';
+import { useTranslate } from '../common/hooks/useTranslate';
 import FriendsIcon from './icons/Friends';
 
 export default function UserShareFriendsInfo() {
     const windowWidth = useMediaQuery();
     const { openModal } = useModal();
+    const { t } = useTranslate();
 
     const BASE_WIDTH = 768;
 
@@ -22,7 +23,7 @@ export default function UserShareFriendsInfo() {
     return (
         <div
             className="cursor-pointer"
-            onClick={() => openModal(infoTexts.en.friends)}
+            onClick={() => openModal(t('info.friends'))}
         >
             <FriendsIcon width={iconsSize} height={iconsSize} />
         </div>

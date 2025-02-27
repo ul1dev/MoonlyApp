@@ -5,11 +5,12 @@ import PointsCard from './PointsCard';
 import InfoIcon from '@/app/common/share/icons/Info';
 import { useMediaQuery } from '@/app/common/hooks/use-media-query';
 import { useModal } from '@/app/common/hocs/info-modal';
-import { infoTexts } from '@/app/common/locale/info';
+import { useTranslate } from '@/app/common/hooks/useTranslate';
 
 export default function ShopAssortmentPoints() {
     const windowWidth = useMediaQuery();
     const { openModal } = useModal();
+    const { t } = useTranslate();
 
     const infoSize =
         windowWidth < 380
@@ -24,10 +25,10 @@ export default function ShopAssortmentPoints() {
         <div>
             <div
                 className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
-                onClick={() => openModal(infoTexts.en.poins)}
+                onClick={() => openModal(t('info.points'))}
             >
                 <h3 className="max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] font-semibold text-white">
-                    Points
+                    {t('shop.points')}
                 </h3>
                 <div className="max-[440px]:-mb-[3px] -mb-0.5">
                     <InfoIcon
@@ -40,7 +41,7 @@ export default function ShopAssortmentPoints() {
             </div>
 
             <h4 className="text-[#A7A7A7] max-[440px]:text-sm text-base pt-2">
-                Coins
+                {t('shop.coins')}
             </h4>
 
             <SimpleBar className="p-2 w-full">

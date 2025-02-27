@@ -1,0 +1,26 @@
+export const profileTexts = {
+    en: {
+        locale: 'en',
+        topUp: 'Top Up',
+        buy: 'Buy',
+        farm: 'Farm',
+        boosts: 'Boosts',
+        coins: 'Coins',
+        points: 'Points',
+        stars: 'Stars',
+        invitedUsers: 'Invited Users',
+        receivedCoins: 'Received Coins',
+    },
+    ru: {
+        locale: 'ru',
+        topUp: 'Пополнить',
+        buy: 'Купить',
+        farm: 'Фарм',
+        boosts: 'Бусты',
+        coins: 'Коины',
+        points: 'Поинты',
+        stars: 'Звёзды',
+        invitedUsers: 'Приглашено',
+        receivedCoins: 'Получено коинов',
+    },
+};

@@ -2,11 +2,13 @@
 
 import ModalProvider from '../common/hocs/info-modal';
 import { useMediaQuery } from '../common/hooks/use-media-query';
+import { useTranslate } from '../common/hooks/useTranslate';
 import ShareIcon from './icons/Share';
 import UserShareFriendsInfo from './UserShareFriendsInfo';
 
 export default function UserShare() {
     const windowWidth = useMediaQuery();
+    const { t } = useTranslate();
 
     const BASE_WIDTH = 768;
 
@@ -32,7 +34,7 @@ export default function UserShare() {
                                 10
                             </p>
                             <p className="font-semibold text-[#B2B2B2] max-[440px]:text-xs max-[680px]:text-sm text-base">
-                                Invited Users
+                                {t('profile.invitedUsers')}
                             </p>
                         </div>
                         <div className="text-center">
@@ -40,7 +42,7 @@ export default function UserShare() {
                                 10
                             </p>
                             <p className="font-semibold text-[#B2B2B2] max-[440px]:text-xs max-[680px]:text-sm text-base">
-                                Received Coins
+                                {t('profile.receivedCoins')}
                             </p>
                         </div>
                     </div>

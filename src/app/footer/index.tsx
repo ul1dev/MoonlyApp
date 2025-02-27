@@ -36,21 +36,25 @@ export default function Footer() {
     const profileWidth = getScaledSize(48);
     const profileHeight = getScaledSize(48);
 
+    const clearPath = pathname.replace(/\/(en|ru)\/?/gi, '/');
+
     return (
         <div className="bg-black flex justify-between gap-3 rounded-2xl py-5 max-sm:px-8 px-12 items-center fixed bottom-0 w-full min-w-80 max-w-3xl z-[1000]">
             <Link href="/nft">
                 <NftIcon
                     width={nftWidth}
                     height={nftHeight}
-                    color={pathname === '/nft' ? '#FFFFFF' : '#4E4E4E'}
+                    color={clearPath === '/nft' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
             <Link href="/profit">
                 <CoinsIcon
                     width={coinsWidth}
                     height={coinsHeight}
-                    color={pathname === '/profit' ? '#CACACA' : '#313131'}
-                    strokeColor={pathname === '/profit' ? '#FFFFFF' : '#4E4E4E'}
+                    color={clearPath === '/profit' ? '#CACACA' : '#313131'}
+                    strokeColor={
+                        clearPath === '/profit' ? '#FFFFFF' : '#4E4E4E'
+                    }
                     strokeWidth={5}
                 />
             </Link>
@@ -58,21 +62,21 @@ export default function Footer() {
                 <HomeIcon
                     width={homeWidth}
                     height={homeHeight}
-                    color={pathname === '/' ? '#FFFFFF' : '#4E4E4E'}
+                    color={clearPath === '/' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
             <Link href="/shop">
                 <ShopIcon
                     width={shopWidth}
                     height={shopHeight}
-                    color={pathname === '/shop' ? '#FFFFFF' : '#4E4E4E'}
+                    color={clearPath === '/shop' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
             <Link href="/profile">
                 <ProfileIcon
                     width={profileWidth}
                     height={profileHeight}
-                    color={pathname === '/profile' ? '#FFFFFF' : '#4E4E4E'}
+                    color={clearPath === '/profile' ? '#FFFFFF' : '#4E4E4E'}
                 />
             </Link>
         </div>

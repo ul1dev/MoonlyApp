@@ -2,14 +2,15 @@
 
 import SimpleBar from 'simplebar-react';
 import CoinsCard from './CoinsCard';
-import { infoTexts } from '@/app/common/locale/info';
 import InfoIcon from '@/app/common/share/icons/Info';
 import { useMediaQuery } from '@/app/common/hooks/use-media-query';
 import { useModal } from '@/app/common/hocs/info-modal';
+import { useTranslate } from '@/app/common/hooks/useTranslate';
 
 export default function ShopAssortmentCoins() {
     const windowWidth = useMediaQuery();
     const { openModal } = useModal();
+    const { t } = useTranslate();
 
     const infoSize =
         windowWidth < 380
@@ -24,10 +25,10 @@ export default function ShopAssortmentCoins() {
         <div>
             <div
                 className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
-                onClick={() => openModal(infoTexts.en.coins)}
+                onClick={() => openModal(t('info.coins'))}
             >
                 <h3 className="max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] font-semibold text-white">
-                    Coins
+                    {t('shop.coins')}
                 </h3>
                 <div className="max-[440px]:-mb-[3px] -mb-0.5">
                     <InfoIcon
@@ -39,7 +40,7 @@ export default function ShopAssortmentCoins() {
                 </div>
             </div>
             <h4 className="text-[#A7A7A7] max-[440px]:text-sm text-base pt-2">
-                Boosts
+                {t('shop.boosts')}
             </h4>
 
             <SimpleBar className="p-2 w-full">
