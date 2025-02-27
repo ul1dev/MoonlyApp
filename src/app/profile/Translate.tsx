@@ -1,13 +1,9 @@
 'use client';
 
 import { useTranslate } from '../common/hooks/useTranslate';
-import { useRouter } from 'next/navigation';
 
 export default function TranslateBtn() {
     const { t } = useTranslate();
-    const router = useRouter();
-
-    // СДЕЛАТЬ ПЕРЕГАЗРУГЗКУ СТРАНИЦЫ ПРИ СМЕНЕ ЯЗЫКА!!!!!!!!!!!!!!
 
     function handleClick() {
         const locale = localStorage.getItem('locale');
@@ -18,7 +14,7 @@ export default function TranslateBtn() {
             localStorage.setItem('locale', 'en');
         }
 
-        router.refresh();
+        window.location.reload();
     }
 
     return (
