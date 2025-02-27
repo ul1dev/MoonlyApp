@@ -23,7 +23,7 @@ export default function ShopAssortmentStars() {
     return (
         <div>
             <div
-                className="flex items-center cursor-pointer max-[440px]:gap-[3px] gap-[5px]"
+                className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
                 onClick={() => openModal(infoTexts.en.stars)}
             >
                 <h3 className="max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] font-semibold text-white">
