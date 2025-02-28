@@ -8,6 +8,7 @@
 
 svg.spinner {
     display: inline-block;
+    animation: rotate 1.5s linear infinite;
 
     @keyframes rotate {
         100% {
@@ -29,8 +30,6 @@ svg.spinner {
             stroke-dashoffset: -124;
         }
     }
-
-    animation: rotate 1.5s linear infinite;
 
     & circle.circular {
         stroke: black;

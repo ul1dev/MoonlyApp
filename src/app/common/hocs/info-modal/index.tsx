@@ -4,6 +4,7 @@ import {
     createContext,
     useState,
     useContext,
+    useRef,
     ReactNode,
     MouseEvent,
 } from 'react';
@@ -26,6 +27,13 @@ export function useInfoModal() {
     return useContext(ModalContext);
 }
 
+interface ModalData {
+    id: number;
+    text: string;
+    type: ModalTypes;
+    isClosing: boolean;
+}
+
 interface InfoModalProviderProps {
     children: ReactNode;
 }
@@ -33,24 +41,33 @@ interface InfoModalProviderProps {
 export default function InfoModalProvider({
     children,
 }: InfoModalProviderProps) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [modalText, setModalText] = useState('Loading...');
-    const [modalType, setModalType] = useState<ModalTypes>('default');
-    const [isClosing, setIsClosing] = useState(false);
+    const [modals, setModals] = useState<ModalData[]>([]);
+    const idCounter = useRef(0);
 
     const openModal = (text: string, type: ModalTypes = 'default') => {
-        setModalType(type);
-        setModalText(text);
-        setIsOpen(true);
-        setIsClosing(false);
+        const newModal: ModalData = {
+            id: idCounter.current++,
+            text,
+            type,
+            isClosing: false,
+        };
+        setModals((prev) => [...prev, newModal]);
+    };
+
+    const closeModalById = (id: number) => {
+        setModals((prev) =>
+            prev.map((modal) =>
+                modal.id === id ? { ...modal, isClosing: true } : modal
+            )
+        );
+        setTimeout(() => {
+            setModals((prev) => prev.filter((modal) => modal.id !== id));
+        }, 500);
     };
 
     const closeModal = () => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setIsOpen(false);
-            setIsClosing(false);
-        }, 500);
+        if (modals.length === 0) return;
+        closeModalById(modals[0].id);
     };
 
     const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -59,25 +76,28 @@ export default function InfoModalProvider({
         }
     };
 
+    const currentModal = modals[0];
+
     return (
         <ModalContext.Provider value={{ openModal, closeModal }}>
             {children}
 
-            {isOpen && modalType === 'default' && (
+            {currentModal && currentModal.type === 'default' && (
                 <DefaultModalView
                     handleBackdropClick={handleBackdropClick}
                     closeModal={closeModal}
-                    isClosing={isClosing}
-                    modalText={modalText}
+                    isClosing={currentModal.isClosing}
+                    modalText={currentModal.text}
                 />
             )}
 
-            {isOpen && modalType === 'success' && (
+            {currentModal && currentModal.type === 'success' && (
                 <SuccessModalView
                     handleBackdropClick={handleBackdropClick}
                     closeModal={closeModal}
-                    isClosing={isClosing}
-                    modalText={modalText}
+                    isClosing={currentModal.isClosing}
+                    modalText={currentModal.text}
+                    modalId={currentModal.id}
                 />
             )}
         </ModalContext.Provider>

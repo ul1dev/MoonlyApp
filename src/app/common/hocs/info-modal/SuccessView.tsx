@@ -9,18 +9,20 @@ interface Props {
     closeModal: MouseEventHandler<HTMLButtonElement>;
     isClosing: boolean;
     modalText: string;
+    modalId: number;
 }
 
 export default function SuccessModalView({
     closeModal,
     isClosing,
     modalText,
+    modalId,
 }: Props) {
     const windowWidth = useMediaQuery();
 
     useEffect(() => {
         setTimeout(closeModal, 3000);
-    }, []);
+    }, [modalId]);
 
     const iconSize = windowWidth < 500 ? 20 : 24;
 
