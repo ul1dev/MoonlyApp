@@ -15,7 +15,7 @@ export const profileTexts = {
         locale: 'ru',
         topUp: 'Пополнить',
         buy: 'Купить',
-        farm: 'Фарм',
+        farm: 'Фармить',
         boosts: 'Бусты',
         coins: 'Коины',
         points: 'Поинты',

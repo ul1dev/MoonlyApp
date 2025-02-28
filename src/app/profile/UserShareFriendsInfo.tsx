@@ -1,13 +1,13 @@
 'use client';
 
-import { useModal } from '../common/hocs/info-modal';
+import { useInfoModal } from '../common/hocs/info-modal';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTranslate } from '../common/hooks/useTranslate';
 import FriendsIcon from './icons/Friends';
 
 export default function UserShareFriendsInfo() {
     const windowWidth = useMediaQuery();
-    const { openModal } = useModal();
+    const { openModal } = useInfoModal();
     const { t } = useTranslate();
 
     const BASE_WIDTH = 768;

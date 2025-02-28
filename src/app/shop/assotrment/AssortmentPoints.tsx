@@ -4,12 +4,12 @@ import SimpleBar from 'simplebar-react';
 import PointsCard from './PointsCard';
 import InfoIcon from '@/app/common/share/icons/Info';
 import { useMediaQuery } from '@/app/common/hooks/use-media-query';
-import { useModal } from '@/app/common/hocs/info-modal';
+import { useInfoModal } from '@/app/common/hocs/info-modal';
 import { useTranslate } from '@/app/common/hooks/useTranslate';
 
 export default function ShopAssortmentPoints() {
     const windowWidth = useMediaQuery();
-    const { openModal } = useModal();
+    const { openModal } = useInfoModal();
     const { t } = useTranslate();
 
     const infoSize =

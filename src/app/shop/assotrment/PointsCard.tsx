@@ -2,7 +2,7 @@
 
 import PixelGreenCoinIcon from '../../common/share/icons/PixelGreenCoin';
 import { useMediaQuery } from '../../common/hooks/use-media-query';
-import PixelPurpleCoinIcon from '../../common/share/icons/PixelPurpleCoin';
+import PointsCardBtn from './PointsCardBtn';
 
 export default function PointsCard({ count = '10', price = '100' }) {
     const windowWidth = useMediaQuery();
@@ -18,8 +18,6 @@ export default function PointsCard({ count = '10', price = '100' }) {
             ? 30
             : 34;
 
-    const pCoinSize = windowWidth < 540 ? 13 : 15;
-
     return (
         <div className="relative max-[380px]:px-4 px-6 py-4">
             <div className="left-0 top-0 absolute bg-[#4e4e4e]/70 rounded-2xl w-full h-full" />
@@ -32,17 +30,7 @@ export default function PointsCard({ count = '10', price = '100' }) {
                     <PixelGreenCoinIcon width={gCoinSize} height={gCoinSize} />
                 </div>
 
-                <div className="bg-white rounded-3xl py-1 px-14 cursor-pointer">
-                    <div className="flex justify-center items-center gap-0.5 w-full">
-                        <p className="font-semibold  max-[540px]:text-base text-lg">
-                            {price}
-                        </p>
-                        <PixelPurpleCoinIcon
-                            width={pCoinSize}
-                            height={pCoinSize}
-                        />
-                    </div>
-                </div>
+                <PointsCardBtn price={price} />
             </div>
         </div>
     );

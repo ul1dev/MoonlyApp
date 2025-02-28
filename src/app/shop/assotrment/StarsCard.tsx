@@ -2,7 +2,7 @@
 
 import PixelGreenCoinIcon from '../../common/share/icons/PixelGreenCoin';
 import { useMediaQuery } from '../../common/hooks/use-media-query';
-import TgStar from '@/app/common/share/icons/TgStar';
+import StarsCardBtn from './StarsCardBtn';
 
 export default function StarsCard({ count = '10', price = '100' }) {
     const windowWidth = useMediaQuery();
@@ -18,8 +18,6 @@ export default function StarsCard({ count = '10', price = '100' }) {
             ? 30
             : 34;
 
-    const pCoinSize = windowWidth < 540 ? 17 : 18;
-
     return (
         <div className="relative max-[380px]:px-4 px-6 py-4">
             <div className="left-0 top-0 absolute bg-[#4e4e4e]/70 rounded-2xl w-full h-full" />
@@ -31,17 +29,7 @@ export default function StarsCard({ count = '10', price = '100' }) {
                     </p>
                     <PixelGreenCoinIcon width={gCoinSize} height={gCoinSize} />
                 </div>
-
-                <div className="bg-white rounded-3xl py-1 px-14 cursor-pointer">
-                    <div className="flex justify-center items-center gap-[1px] w-full">
-                        <p className="font-semibold  max-[540px]:text-base text-lg">
-                            {price}
-                        </p>
-                        <div className="max-[540px]:-mt-[2px] -mt-[1px]">
-                            <TgStar width={pCoinSize} height={pCoinSize} />
-                        </div>
-                    </div>
-                </div>
+                <StarsCardBtn price={price} />
             </div>
         </div>
     );
