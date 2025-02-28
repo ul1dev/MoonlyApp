@@ -10,8 +10,9 @@ import {
 } from 'react';
 import DefaultModalView from './DefaultView';
 import SuccessModalView from './SuccessView';
+import ErrorModalView from './ErrorView';
 
-type ModalTypes = 'default' | 'success';
+type ModalTypes = 'default' | 'success' | 'error';
 
 interface ModalContextType {
     openModal: (text: string, type?: ModalTypes) => void;
@@ -93,6 +94,16 @@ export default function InfoModalProvider({
 
             {currentModal && currentModal.type === 'success' && (
                 <SuccessModalView
+                    handleBackdropClick={handleBackdropClick}
+                    closeModal={closeModal}
+                    isClosing={currentModal.isClosing}
+                    modalText={currentModal.text}
+                    modalId={currentModal.id}
+                />
+            )}
+
+            {currentModal && currentModal.type === 'error' && (
+                <ErrorModalView
                     handleBackdropClick={handleBackdropClick}
                     closeModal={closeModal}
                     isClosing={currentModal.isClosing}

@@ -2,7 +2,7 @@
 
 import { MouseEventHandler, useEffect } from 'react';
 import { useMediaQuery } from '../../hooks/use-media-query';
-import SuccessIcon from './icons/Success';
+import ErrorIcon from './icons/Error';
 
 interface Props {
     handleBackdropClick: MouseEventHandler<HTMLDivElement>;
@@ -12,7 +12,7 @@ interface Props {
     modalId: number;
 }
 
-export default function SuccessModalView({
+export default function ErrorModalView({
     closeModal,
     isClosing,
     modalText,
@@ -38,7 +38,7 @@ export default function SuccessModalView({
                 <div className="absolute top-0 left-0 w-full h-full bg-[#4e4e4e] max-[400px]:rounded-xl rounded-2xl"></div>
                 <div className="relative z-10 max-[400px]:px-4 max-[400px]:py-3 px-6 py-4 flex items-center max-[400px]:gap-2 gap-3">
                     <div>
-                        <SuccessIcon width={iconSize} height={iconSize} />
+                        <ErrorIcon width={iconSize} height={iconSize} />
                     </div>
                     <p
                         className="text-white font-semibold max-[400px]:text-sm text-base pr-2"
