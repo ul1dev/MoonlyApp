@@ -23,25 +23,27 @@ export default function ShopAssortmentStars() {
 
     return (
         <div>
-            <div
-                className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
-                onClick={() => openModal(t('info.stars'))}
-            >
-                <h3 className="max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] font-semibold text-white">
-                    {t('shop.stars')}
-                </h3>
-                <div className="max-[440px]:-mb-[3px] -mb-0.5">
-                    <InfoIcon
-                        width={infoSize}
-                        height={infoSize}
-                        color="#FFFFFF"
-                        strokeWidth={4}
-                    />
+            <div className="pl-2">
+                <div
+                    className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
+                    onClick={() => openModal(t('info.stars'))}
+                >
+                    <h3 className="max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] font-semibold text-white">
+                        {t('shop.stars')}
+                    </h3>
+                    <div className="max-[440px]:-mb-[3px] -mb-0.5">
+                        <InfoIcon
+                            width={infoSize}
+                            height={infoSize}
+                            color="#FFFFFF"
+                            strokeWidth={4}
+                        />
+                    </div>
                 </div>
+                <h4 className="text-[#A7A7A7] max-[440px]:text-sm text-base pt-2">
+                    {t('shop.coins')}
+                </h4>
             </div>
-            <h4 className="text-[#A7A7A7] max-[440px]:text-sm text-base pt-2">
-                {t('shop.coins')}
-            </h4>
 
             <SimpleBar className="p-2 w-full">
                 <div className="flex gap-4">

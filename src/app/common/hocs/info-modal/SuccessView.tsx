@@ -27,7 +27,7 @@ export default function SuccessModalView({
     const iconSize = windowWidth < 400 ? 20 : 24;
 
     return (
-        <div className="fixed inset-0 z-[10000] w-fit h-fit top-14 mx-auto px-2">
+        <div className="fixed inset-0 z-[10000] w-fit h-fit top-10 mx-auto px-2">
             <div
                 className={`
             relative shadow-lg h-fit w-full min-w-[304px]

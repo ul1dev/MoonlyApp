@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 
 import './global.scss';
 import 'animate.css';
+import StartBackground from './common/hocs/stars-bg';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -43,7 +44,7 @@ export default function RootLayout({
             <body
                 className={`${inter.variable} ${rubikOne.variable} ${rubikMonoOne.variable} min-w-80 max-w-3xl mx-auto`}
             >
-                {children}
+                <StartBackground>{children}</StartBackground>
             </body>
         </html>
     );

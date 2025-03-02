@@ -19,10 +19,7 @@ export default function ShopFortune() {
     const fortuneHeight = getScaledSize(50, 34);
 
     return (
-        <Link
-            href="/fortune"
-            className="max-[380px]:pt-4 max-[440px]:pt-6 pt-10"
-        >
+        <Link href="/fortune">
             <FortuneIcon width={fortuneWidth} height={fortuneHeight} />
         </Link>
     );

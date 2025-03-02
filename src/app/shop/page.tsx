@@ -1,8 +1,6 @@
-import StartBackground from '@/app/common/hocs/stars-bg';
 import Footer from '../footer';
 import ShopFortune from './Fortune';
 import ShopBalance from './Balance';
-import ShopBalanceCoins from './BalanceCoins';
 import TgStarSystem from '../common/share/icons/TgStarSystem';
 import ShopAssortment from './assotrment/Assortment';
 
@@ -11,21 +9,16 @@ import './index.scss';
 
 export default function Shop() {
     return (
-        <StartBackground>
-            <div>
-                <div className="max-[380px]:px-4 max-[440px]:px-8 px-12">
-                    <div className="flex justify-between items-center">
-                        <ShopFortune />
-                        <ShopBalance />
-                    </div>
-                    <div className="max-[550px]:flex hidden justify-center max-[380px]:pt-2 pt-3">
-                        <ShopBalanceCoins />
-                    </div>
+        <div className="pt-14 pb-20">
+            <div className="max-[380px]:px-4 max-[440px]:px-8 py-4 px-12 fixed w-full h-fit inset-0 bg-black shadow-xl min-w-80 max-w-3xl z-[1000] mx-auto">
+                <div className="flex justify-between items-center">
+                    <ShopFortune />
+                    <ShopBalance />
                 </div>
-                <ShopAssortment />
-                <Footer />
-                <TgStarSystem />
             </div>
-        </StartBackground>
+            <ShopAssortment />
+            <Footer />
+            <TgStarSystem />
+        </div>
     );
 }

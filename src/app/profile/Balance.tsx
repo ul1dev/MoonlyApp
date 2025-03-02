@@ -35,37 +35,22 @@ export default function UserBalance() {
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
                     <p className="text-[#B2B2B2] font-medium">
-                        {t('profile.stars')}
-                    </p>
-                    <div className="flex gap-[3px] items-center">
-                        <p className="text-white font-bold">100</p>
-                        <div className="max-[440px]:-mt-0.5 -mt-1">
-                            <TgStar width={iconsSize} height={iconsSize} />
-                        </div>
-                    </div>
-                </div>
-                <div className="bg-white rounded-3xl cursor-pointer -mt-1">
-                    <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px]">
-                        {t('profile.topUp')}
-                    </p>
-                </div>
-            </div>
-            <div className="flex justify-between gap-3 items-center">
-                <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
-                    <p className="text-[#B2B2B2] font-medium">
-                        {t('profile.boosts')}
+                        {t('profile.points')}
                     </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
-                            <BoostsIcon width={boostWidth} height={iconsSize} />
+                            <PixelPurpleCoinIcon
+                                width={iconsSize}
+                                height={iconsSize}
+                            />
                         </div>
                     </div>
                 </div>
-                <Link href="/shop">
-                    <div className="border-2 border-white rounded-3xl cursor-pointer -mt-1">
-                        <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px] text-white">
-                            {t('profile.buy')}
+                <Link href="/">
+                    <div className="bg-white rounded-3xl cursor-pointer -mt-1">
+                        <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px]">
+                            {t('profile.farm')}
                         </p>
                     </div>
                 </Link>
@@ -96,22 +81,19 @@ export default function UserBalance() {
             <div className="flex justify-between gap-3 items-center">
                 <div className="flex gap-[10px] max-[380px]:text-base max-[440px]:text-[18px] max-[680px]:text-[20px] text-[22px] items-center">
                     <p className="text-[#B2B2B2] font-medium">
-                        {t('profile.points')}
+                        {t('profile.boosts')}
                     </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">100</p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
-                            <PixelPurpleCoinIcon
-                                width={iconsSize}
-                                height={iconsSize}
-                            />
+                            <BoostsIcon width={boostWidth} height={iconsSize} />
                         </div>
                     </div>
                 </div>
-                <Link href="/">
+                <Link href="/shop">
                     <div className="border-2 border-white rounded-3xl cursor-pointer -mt-1">
                         <p className="max-[380px]:text-xs max-[500px]:text-sm max-[680px]:text-[15px] text-base font-bold max-[440px]:px-5 max-[680px]:py-1 px-6 py-[5px] text-white">
-                            {t('profile.farm')}
+                            {t('profile.buy')}
                         </p>
                     </div>
                 </Link>
