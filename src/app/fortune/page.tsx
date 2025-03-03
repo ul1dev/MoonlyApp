@@ -1,6 +1,5 @@
 'use client';
 
-import Footer from '../footer';
 import { useTranslate } from '../common/hooks/useTranslate';
 
 export default function Fortune() {
@@ -8,7 +7,7 @@ export default function Fortune() {
 
     return (
         <div className="h-full">
-            <div className="flex flex-col gap-3 justify-center h-full w-full text-center -mt-40 max-[380px]:px-6 max-[440px]:px-8 max-[580px]:px-10 px-20">
+            <div className="flex flex-col gap-3 justify-center items-center h-full w-full text-center pt-40 max-[380px]:px-6 max-[440px]:px-8 max-[580px]:px-10 px-20">
                 <h3 className="text-white max-[440px]:text-2xl text-3xl">
                     {t('fortune.soon')}
                 </h3>
@@ -16,8 +15,6 @@ export default function Fortune() {
                     {t('fortune.soonDescr')}
                 </p>
             </div>
-
-            <Footer />
         </div>
     );
 }
