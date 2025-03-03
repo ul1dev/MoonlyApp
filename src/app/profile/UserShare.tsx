@@ -25,7 +25,7 @@ export default function UserShare() {
             <div className="relative max-[380px]:mx-2 max-[440px]:mx-3 mx-5 my-8">
                 <div className="bg-[#4e4e4e]/25 blur-[2px] absolute top-0 left-0 w-full h-full rounded-2xl"></div>
 
-                <div className="relative z-[100] flex justify-between items-center max-[380px]:px-4 p-6">
+                <div className="relative flex justify-between items-center max-[380px]:px-4 p-6">
                     <UserShareFriendsInfo />
 
                     <div className="flex max-[380px]:gap-3 max-[440px]:gap-5 gap-[30px]">

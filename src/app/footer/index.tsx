@@ -8,10 +8,14 @@ import CoinsIcon from './icons/CoinsIcon';
 import ProfileIcon from './icons/ProfileIcon';
 import { usePathname } from 'next/navigation';
 import { useMediaQuery } from '../common/hooks/use-media-query';
+import classNames from 'classnames';
+import useIsMobile from '../common/hooks/use-is-mobile';
 
 export default function Footer() {
     const pathname = usePathname();
     const windowWidth = useMediaQuery();
+
+    const isMobile = useIsMobile();
 
     const BASE_WIDTH = 768;
 
@@ -37,44 +41,56 @@ export default function Footer() {
     const profileHeight = getScaledSize(48);
 
     return (
-        <div className="bg-black flex justify-between gap-3 py-5 max-sm:px-8 px-12 items-center fixed bottom-0 w-full min-w-80 max-w-3xl z-[1000]">
-            <Link href="/nft">
-                <NftIcon
-                    width={nftWidth}
-                    height={nftHeight}
-                    color={pathname === '/nft' ? '#FFFFFF' : '#4E4E4E'}
-                />
-            </Link>
-            <Link href="/profit">
-                <CoinsIcon
-                    width={coinsWidth}
-                    height={coinsHeight}
-                    color={pathname === '/profit' ? '#CACACA' : '#313131'}
-                    strokeColor={pathname === '/profit' ? '#FFFFFF' : '#4E4E4E'}
-                    strokeWidth={5}
-                />
-            </Link>
-            <Link href="/">
-                <HomeIcon
-                    width={homeWidth}
-                    height={homeHeight}
-                    color={pathname === '/' ? '#FFFFFF' : '#4E4E4E'}
-                />
-            </Link>
-            <Link href="/shop">
-                <ShopIcon
-                    width={shopWidth}
-                    height={shopHeight}
-                    color={pathname === '/shop' ? '#FFFFFF' : '#4E4E4E'}
-                />
-            </Link>
-            <Link href="/profile">
-                <ProfileIcon
-                    width={profileWidth}
-                    height={profileHeight}
-                    color={pathname === '/profile' ? '#FFFFFF' : '#4E4E4E'}
-                />
-            </Link>
+        <div className="fixed bottom-0 left-0 w-full">
+            <div
+                className={classNames(
+                    'bg-black flex justify-between gap-3 pt-5 max-sm:px-8 px-12 items-center w-full min-w-80 max-w-3xl mx-auto z-[1000]',
+                    {
+                        'pb-12': isMobile,
+                        'pb-1': !isMobile,
+                    }
+                )}
+            >
+                <Link href="/nft">
+                    <NftIcon
+                        width={nftWidth}
+                        height={nftHeight}
+                        color={pathname === '/nft' ? '#FFFFFF' : '#4E4E4E'}
+                    />
+                </Link>
+                <Link href="/profit">
+                    <CoinsIcon
+                        width={coinsWidth}
+                        height={coinsHeight}
+                        color={pathname === '/profit' ? '#CACACA' : '#313131'}
+                        strokeColor={
+                            pathname === '/profit' ? '#FFFFFF' : '#4E4E4E'
+                        }
+                        strokeWidth={5}
+                    />
+                </Link>
+                <Link href="/">
+                    <HomeIcon
+                        width={homeWidth}
+                        height={homeHeight}
+                        color={pathname === '/' ? '#FFFFFF' : '#4E4E4E'}
+                    />
+                </Link>
+                <Link href="/shop">
+                    <ShopIcon
+                        width={shopWidth}
+                        height={shopHeight}
+                        color={pathname === '/shop' ? '#FFFFFF' : '#4E4E4E'}
+                    />
+                </Link>
+                <Link href="/profile">
+                    <ProfileIcon
+                        width={profileWidth}
+                        height={profileHeight}
+                        color={pathname === '/profile' ? '#FFFFFF' : '#4E4E4E'}
+                    />
+                </Link>
+            </div>
         </div>
     );
 }

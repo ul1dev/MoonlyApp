@@ -1,6 +1,6 @@
 import StarryNight from './StarryNight';
 
-export default function StartBackground({
+export default function StarsBackground({
     children,
 }: Readonly<{
     children: React.ReactNode;

@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 
 import './global.scss';
 import 'animate.css';
-import StartBackground from './common/hocs/stars-bg';
+import LayoutWrapper from './Wrapper';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -43,8 +43,9 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={`${inter.variable} ${rubikOne.variable} ${rubikMonoOne.variable} min-w-80 max-w-3xl mx-auto`}
+                style={{ overflow: 'hidden' }}
             >
-                <StartBackground>{children}</StartBackground>
+                <LayoutWrapper>{children}</LayoutWrapper>
             </body>
         </html>
     );

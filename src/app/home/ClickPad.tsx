@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import BigMoonlyCoin from './icons/BigMoonlyCoin';
+import { hapticFeedback } from '@telegram-apps/sdk-react';
 
 export default function ClickPad() {
     const [clicks, setClicks] = useState<any[]>([]);
@@ -31,6 +32,10 @@ export default function ClickPad() {
 
         const newClick = { x, y, id: Date.now() };
         setClicks((prev) => [...prev, newClick]);
+
+        if (hapticFeedback.isSupported()) {
+            hapticFeedback.impactOccurred('soft');
+        }
     };
 
     return (
