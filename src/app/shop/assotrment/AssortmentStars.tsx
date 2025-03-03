@@ -22,7 +22,7 @@ export default function ShopAssortmentStars() {
             : 18;
 
     return (
-        <div>
+        <div className="pr-2">
             <div className="pl-2">
                 <div
                     className="flex items-center cursor-pointer w-fit max-[440px]:gap-[3px] gap-[5px]"
