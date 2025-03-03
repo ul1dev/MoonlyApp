@@ -17,7 +17,7 @@ export default function UserInfo() {
     const profileSize = getScaledSize(130);
 
     return (
-        <div className="flex flex-col items-center max-[440px]:pt-28 max-[440px]:pb-8 pt-28 pb-12">
+        <div className="flex flex-col items-center max-[440px]:pb-8 pt-20 pb-12">
             <ProfileIcon width={profileSize} height={profileSize} />
 
             <div

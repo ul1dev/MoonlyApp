@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import useIsMobile from '../common/hooks/use-is-mobile';
 
 export default function ProfileClient() {
-     const isMobile = useIsMobile();
+    const isMobile = useIsMobile();
 
     return (
         <div
