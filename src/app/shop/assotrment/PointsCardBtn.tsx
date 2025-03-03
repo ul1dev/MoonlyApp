@@ -5,6 +5,7 @@ import { useMediaQuery } from '../../common/hooks/use-media-query';
 import classNames from 'classnames';
 import PixelPurpleCoinIcon from '@/app/common/share/icons/PixelPurpleCoin';
 import { useInfoModal } from '@/app/common/hocs/info-modal';
+import { invoice } from '@telegram-apps/sdk-react';
 
 export default function PointsCardBtn({ price = '100' }) {
     const { openModal } = useInfoModal();
@@ -23,6 +24,8 @@ export default function PointsCardBtn({ price = '100' }) {
             setLoading(false);
             openModal('Вы успешно приобрели 100 коинов!', 'success');
         }, 2000);
+
+        // invoice.open('')
     };
 
     return (

@@ -33,7 +33,13 @@ export default function ClickPad() {
         const newClick = { x, y, id: Date.now() };
         setClicks((prev) => [...prev, newClick]);
 
-        if (hapticFeedback.isSupported()) {
+        setTimeout(() => {
+            setClicks((state) =>
+                state.filter((item) => item.id !== newClick.id)
+            );
+        }, 550);
+
+        if (hapticFeedback?.isSupported()) {
             hapticFeedback.impactOccurred('soft');
         }
     };
@@ -48,6 +54,7 @@ export default function ClickPad() {
             onClick={handleClick}
         >
             <BigMoonlyCoin width={coinSize} height={coinSize} />
+
             {clicks.map((click) => (
                 <div
                     key={click.id}
