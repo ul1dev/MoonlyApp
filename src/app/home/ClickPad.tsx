@@ -58,7 +58,7 @@ export default function ClickPad() {
             {clicks.map((click) => (
                 <div
                     key={click.id}
-                    className="select-none absolute text-white font-bold max-[380px]:text-3xl max-[440px]:text-4xl text-5xl animate__animated animate__fadeOut animate__bounce animate__fast"
+                    className="select-none absolute text-white font-bold max-[380px]:text-3xl max-[440px]:text-4xl text-5xl animate__animated animate__fadeOutUp animate__bounce animate__fast"
                     style={{
                         left: `${click.x - 25}px`,
                         top: `${click.y - 25}px`,
