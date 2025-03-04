@@ -52,7 +52,7 @@ export default function ShopAssortmentCoins() {
                     <CoinsCard count="100" price="2.5K" />
                     <CoinsCard count="200" price="4K" />
                     <CoinsCard count="300" price="5K" />
-                    <div className="-ml-3">.</div>
+                    <div className="-ml-4">.</div>
                 </div>
             </SimpleBar>
         </div>

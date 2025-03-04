@@ -52,7 +52,7 @@ export default function ShopAssortmentPoints() {
                     <PointsCard count="100" price="8K" />
                     <PointsCard count="1K" price="80K" />
                     <PointsCard count="10K" price="800K" />
-                    <div className="-ml-3">.</div>
+                    <div className="-ml-4">.</div>
                 </div>
             </SimpleBar>
         </div>
