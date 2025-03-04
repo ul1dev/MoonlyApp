@@ -18,7 +18,7 @@ export default function ShopClient() {
         <UnscrollWrapper>
             <div
                 className={classNames('pb-20', {
-                    'pt-14': !isMobile,
+                    'max-[680px]:pt-10 pt-14': !isMobile,
                     'pt-36': isMobile,
                 })}
             >

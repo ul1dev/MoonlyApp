@@ -54,7 +54,15 @@ export default function TelegramWrapper({
             const locale = localStorage.getItem('locale');
             if (!locale) {
                 const userData = initDataUser();
-                localStorage.setItem('locale', userData?.language_code ?? 'ru');
+                const userLang = userData?.language_code ?? '';
+
+                const cisLanguages = ['ru', 'be', 'uk', 'kk', 'hy', 'az', 'et'];
+
+                if (cisLanguages.includes(userLang)) {
+                    localStorage.setItem('locale', 'ru');
+                } else {
+                    localStorage.setItem('locale', 'en');
+                }
             }
         }
     }
