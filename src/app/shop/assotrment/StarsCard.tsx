@@ -4,7 +4,11 @@ import PixelGreenCoinIcon from '../../common/share/icons/PixelGreenCoin';
 import { useMediaQuery } from '../../common/hooks/use-media-query';
 import StarsCardBtn from './StarsCardBtn';
 
-export default function StarsCard({ count = '10', price = '100' }) {
+export default function StarsCard({
+    count = '1',
+    price = '100',
+    numCount = 1,
+}) {
     const windowWidth = useMediaQuery();
 
     const gCoinSize =
@@ -29,7 +33,7 @@ export default function StarsCard({ count = '10', price = '100' }) {
                     </p>
                     <PixelGreenCoinIcon width={gCoinSize} height={gCoinSize} />
                 </div>
-                <StarsCardBtn price={price} />
+                <StarsCardBtn price={price} numCount={numCount} />
             </div>
         </div>
     );

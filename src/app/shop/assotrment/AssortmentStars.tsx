@@ -47,13 +47,13 @@ export default function ShopAssortmentStars() {
 
             <SimpleBar className="p-2 w-full">
                 <div className="flex gap-4">
-                    <StarsCard count="1" price="20" />
-                    <StarsCard count="10" price="180" />
-                    <StarsCard count="50" price="850" />
-                    <StarsCard count="100" price="1.5K" />
-                    <StarsCard count="500" price="7K" />
-                    <StarsCard count="1K" price="13K" />
-                    <StarsCard count="5K" price="60K" />
+                    <StarsCard count="1" price="20" numCount={1} />
+                    <StarsCard count="10" price="180" numCount={10} />
+                    <StarsCard count="50" price="850" numCount={50} />
+                    <StarsCard count="100" price="1.5K" numCount={100} />
+                    <StarsCard count="500" price="7K" numCount={500} />
+                    <StarsCard count="1K" price="13K" numCount={1000} />
+                    <StarsCard count="5K" price="60K" numCount={5000} />
                     <div className="-ml-4">.</div>
                 </div>
             </SimpleBar>

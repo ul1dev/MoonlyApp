@@ -4,7 +4,11 @@ import { useMediaQuery } from '../../common/hooks/use-media-query';
 import BoostsIcon from '@/app/common/share/icons/Boosts';
 import CoinsCardBtn from './CoinsCardBtn';
 
-export default function CoinsCard({ count = '10', price = '100' }) {
+export default function CoinsCard({
+    count = '10',
+    price = '100',
+    numCount = 1,
+}) {
     const windowWidth = useMediaQuery();
 
     const boostsHeight =
@@ -36,7 +40,7 @@ export default function CoinsCard({ count = '10', price = '100' }) {
                     </p>
                     <BoostsIcon width={boostsWidth} height={boostsHeight} />
                 </div>
-                <CoinsCardBtn price={price} />
+                <CoinsCardBtn price={price} numCount={numCount} />
             </div>
         </div>
     );

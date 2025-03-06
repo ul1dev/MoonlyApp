@@ -9,14 +9,19 @@ import {
     requestFullscreen,
     initDataUser,
     miniApp,
+    initData,
 } from '@telegram-apps/sdk-react';
 import { isTMA } from '@telegram-apps/bridge';
+import { useDispatch } from 'react-redux';
+import { setIsTmaMounted } from '@/app/store/reducers/telegram';
 
 export default function TelegramWrapper({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const dispatch = useDispatch();
+
     useEffect(() => {
         mountTMA();
     }, []);
@@ -38,6 +43,8 @@ export default function TelegramWrapper({
 
             if (!miniApp.isMounted()) {
                 await miniApp.mount();
+                miniApp.setBottomBarColor('#000000');
+                miniApp.setHeaderColor('#000000');
             }
 
             const ua = navigator.userAgent.toLowerCase();
@@ -50,6 +57,8 @@ export default function TelegramWrapper({
             ) {
                 await requestFullscreen();
             }
+
+            initData.restore();
 
             const locale = localStorage.getItem('locale');
             if (!locale) {
@@ -64,6 +73,8 @@ export default function TelegramWrapper({
                     localStorage.setItem('locale', 'en');
                 }
             }
+
+            dispatch(setIsTmaMounted(true));
         }
     }
 

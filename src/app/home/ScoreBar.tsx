@@ -1,9 +1,11 @@
 'use client';
 
 import { useMediaQuery } from '../common/hooks/use-media-query';
+import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import PixelCoinIcon from '../common/share/icons/PixelPurpleCoin';
 
 export default function ScoreBar() {
+    const { data } = useTypedSelector((state) => state.user);
     const windowWidth = useMediaQuery();
 
     const BASE_WIDTH = 768;
@@ -24,7 +26,7 @@ export default function ScoreBar() {
                 className="max-[340px]:text-2xl max-[500px]:text-3xl max-[680px]:text-4xl text-5xl text-white font-normal"
                 style={{ fontFamily: 'var(--font-rubik-one)' }}
             >
-                1 123 123 000
+                {data.pointsBalance}
             </div>
         </div>
     );

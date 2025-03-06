@@ -5,24 +5,75 @@ import { useMediaQuery } from '../../common/hooks/use-media-query';
 import classNames from 'classnames';
 import TgStar from '@/app/common/share/icons/TgStar';
 import { useInfoModal } from '@/app/common/hocs/info-modal';
+import { invoice } from '@telegram-apps/sdk-react';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '@/app/common/hooks/useTypedSelector';
+import { buyCoinsByStarsRequest } from '@/app/common/api/buyCoinsByStars';
+import { setCoinsBalance } from '@/app/store/reducers/users';
+import { getUserDataByIdRequest } from '@/app/common/api/getUserData';
 
-export default function StarsCardBtn({ price = '100' }) {
+export default function StarsCardBtn({ price = '100', numCount = 1 }) {
     const { openModal } = useInfoModal();
     const [loading, setLoading] = useState(false);
+    const { data: userData } = useTypedSelector((state) => state.user);
+    const dispatch = useDispatch();
 
     const windowWidth = useMediaQuery();
     const spinnerSize = windowWidth < 540 ? 20 : 24;
     const starSize = windowWidth < 540 ? 17 : 18;
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (loading) return;
 
         setLoading(true);
 
-        setTimeout(() => {
+        const locale = localStorage.getItem('locale');
+
+        try {
+            const buyData = await buyCoinsByStarsRequest({
+                userId: userData.id,
+                count: numCount,
+            });
+
+            const payStatus = await invoice.open(
+                buyData?.invoiceLink?.replace('https://t.me/$', '')
+            );
+
+            if (payStatus === 'paid') {
+                const newUserData = await getUserDataByIdRequest(userData.id);
+
+                if (newUserData) {
+                    dispatch(setCoinsBalance(newUserData.coinsBalance));
+                }
+
+                if (locale === 'ru') {
+                    openModal(
+                        `Вы успешно приобрели ${numCount} коин(ов)!`,
+                        'success'
+                    );
+                } else {
+                    openModal(
+                        `You have successfully purchased ${numCount} coin(s)!`,
+                        'success'
+                    );
+                }
+            } else {
+                if (locale === 'ru') {
+                    openModal('Оплата не прошла', 'error');
+                } else {
+                    openModal('Payment failed', 'error');
+                }
+                openModal('Оплата не прошла', 'error');
+            }
+        } catch (e) {
+            if (locale === 'ru') {
+                openModal('Ошибка, попробуйте еще раз', 'error');
+            } else {
+                openModal('Error, try again', 'error');
+            }
+        } finally {
             setLoading(false);
-            openModal('Вы успешно приобрели 100 коинов!', 'success');
-        }, 2000);
+        }
     };
 
     return (
@@ -59,6 +110,8 @@ export default function StarsCardBtn({ price = '100' }) {
                                 r="20"
                                 fill="none"
                                 className="circular"
+                                stroke="black"
+                                strokeWidth={8}
                             />
                         </svg>
                     </div>

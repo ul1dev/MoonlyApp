@@ -5,10 +5,11 @@ import { useMediaQuery } from '../common/hooks/use-media-query';
 import BoostsIcon from '../common/share/icons/Boosts';
 import PixelGreenCoinIcon from '../common/share/icons/PixelGreenCoin';
 import PixelPurpleCoinIcon from '../common/share/icons/PixelPurpleCoin';
-import TgStar from '../common/share/icons/TgStar';
 import { useTranslate } from '../common/hooks/useTranslate';
+import { useTypedSelector } from '../common/hooks/useTypedSelector';
 
 export default function UserBalance() {
+    const { data } = useTypedSelector((state) => state.user);
     const windowWidth = useMediaQuery();
     const { t } = useTranslate();
 
@@ -38,7 +39,9 @@ export default function UserBalance() {
                         {t('profile.points')}
                     </p>
                     <div className="flex gap-[3px] items-center">
-                        <p className="text-white font-bold">100</p>
+                        <p className="text-white font-bold">
+                            {data.pointsBalance}
+                        </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <PixelPurpleCoinIcon
                                 width={iconsSize}
@@ -61,7 +64,9 @@ export default function UserBalance() {
                         {t('profile.coins')}
                     </p>
                     <div className="flex gap-[3px] items-center">
-                        <p className="text-white font-bold">100</p>
+                        <p className="text-white font-bold">
+                            {data.coinsBalance}
+                        </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <PixelGreenCoinIcon
                                 width={iconsSize}
@@ -84,7 +89,9 @@ export default function UserBalance() {
                         {t('profile.boosts')}
                     </p>
                     <div className="flex gap-[3px] items-center">
-                        <p className="text-white font-bold">100</p>
+                        <p className="text-white font-bold">
+                            {data.boostsBalance}
+                        </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <BoostsIcon width={boostWidth} height={iconsSize} />
                         </div>

@@ -48,11 +48,11 @@ export default function ShopAssortmentPoints() {
 
             <SimpleBar className="p-2 w-full">
                 <div className="flex gap-4">
-                    <PointsCard count="1" price="100" />
-                    <PointsCard count="10" price="1K" />
-                    <PointsCard count="100" price="8K" />
-                    <PointsCard count="1K" price="80K" />
-                    <PointsCard count="10K" price="800K" />
+                    <PointsCard count="1" price="100" numCount={1} />
+                    <PointsCard count="10" price="1K" numCount={10} />
+                    <PointsCard count="100" price="8K" numCount={100} />
+                    <PointsCard count="1K" price="80K" numCount={1000} />
+                    <PointsCard count="10K" price="800K" numCount={10000} />
                     <div className="-ml-4">.</div>
                 </div>
             </SimpleBar>

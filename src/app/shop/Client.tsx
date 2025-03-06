@@ -4,15 +4,24 @@ import ShopFortune from './Fortune';
 import ShopBalance from './Balance';
 import TgStarSystem from '../common/share/icons/TgStarSystem';
 import ShopAssortment from './assotrment/Assortment';
-
-import 'simplebar-react/dist/simplebar.min.css';
-import './index.scss';
 import classNames from 'classnames';
 import useIsMobile from '../common/hooks/use-is-mobile';
 import UnscrollWrapper from '../common/hocs/telegram/Unscroll';
+import { useLayoutEffect, useState } from 'react';
+import FullPageLoader from '../scroll';
+
+import 'simplebar-react/dist/simplebar.min.css';
+import './index.scss';
 
 export default function ShopClient() {
     const isMobile = useIsMobile();
+    const [isLoading, setIsLoading] = useState(true);
+
+    useLayoutEffect(() => {
+        setTimeout(() => setIsLoading(false), 300);
+    }, []);
+
+    if (isLoading) return <FullPageLoader />;
 
     return (
         <UnscrollWrapper>

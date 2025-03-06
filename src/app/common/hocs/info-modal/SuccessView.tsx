@@ -3,6 +3,8 @@
 import { MouseEventHandler, useEffect } from 'react';
 import { useMediaQuery } from '../../hooks/use-media-query';
 import SuccessIcon from './icons/Success';
+import classNames from 'classnames';
+import useIsMobile from '../../hooks/use-is-mobile';
 
 interface Props {
     handleBackdropClick: MouseEventHandler<HTMLDivElement>;
@@ -19,6 +21,7 @@ export default function SuccessModalView({
     modalId,
 }: Props) {
     const windowWidth = useMediaQuery();
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         setTimeout(closeModal, 3000);
@@ -27,7 +30,15 @@ export default function SuccessModalView({
     const iconSize = windowWidth < 400 ? 20 : 24;
 
     return (
-        <div className="fixed inset-0 z-[10000] w-fit h-fit top-10 mx-auto px-2">
+        <div
+            className={classNames(
+                'fixed inset-0 z-[10000] w-fit h-fit top-10 mx-auto px-2',
+                {
+                    'top-10': !isMobile,
+                    'top-32': isMobile,
+                }
+            )}
+        >
             <div
                 className={`
             relative shadow-lg h-fit w-full min-w-[304px]

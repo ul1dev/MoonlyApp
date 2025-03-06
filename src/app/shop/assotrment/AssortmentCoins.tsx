@@ -47,11 +47,11 @@ export default function ShopAssortmentCoins() {
 
             <SimpleBar className="p-2 w-full">
                 <div className="flex gap-4">
-                    <CoinsCard count="1" price="30" />
-                    <CoinsCard count="10" price="270" />
-                    <CoinsCard count="100" price="2.5K" />
-                    <CoinsCard count="200" price="4K" />
-                    <CoinsCard count="300" price="5K" />
+                    <CoinsCard count="1" price="30" numCount={1} />
+                    <CoinsCard count="10" price="270" numCount={10} />
+                    <CoinsCard count="100" price="2.5K" numCount={100} />
+                    <CoinsCard count="200" price="4K" numCount={200} />
+                    <CoinsCard count="300" price="5K" numCount={300} />
                     <div className="-ml-4">.</div>
                 </div>
             </SimpleBar>
