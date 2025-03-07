@@ -4,10 +4,20 @@ import { useState } from 'react';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import BigMoonlyCoin from './icons/BigMoonlyCoin';
 import { hapticFeedback } from '@telegram-apps/sdk-react';
+import { useDispatch } from 'react-redux';
+import { addPointsBalance } from '../store/reducers/users';
+import { useTypedSelector } from '../common/hooks/useTypedSelector';
+import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
+import { increment } from '../store/reducers/clicks';
+import { useAutoSaveClicks } from '../common/hooks/use-auto-save-clicks';
 
 export default function ClickPad() {
     const [clicks, setClicks] = useState<any[]>([]);
     const windowWidth = useMediaQuery();
+    const dispatch = useDispatch();
+    const { data: userData } = useTypedSelector((state) => state.user);
+
+    useAutoSaveClicks();
 
     const coinSize =
         windowWidth < 340
@@ -24,7 +34,12 @@ export default function ClickPad() {
             ? 450
             : 500;
 
+    const pointsByTapCount = 1 * userData.level;
+
     const handleClick = (e: React.MouseEvent) => {
+        dispatch(addPointsBalance(String(pointsByTapCount)));
+        dispatch(increment());
+
         const { clientX, clientY, currentTarget } = e;
         const rect = currentTarget.getBoundingClientRect();
         const x = clientX - rect.left;
@@ -64,7 +79,7 @@ export default function ClickPad() {
                         top: `${click.y - 25}px`,
                     }}
                 >
-                    +1
+                    +{getShortFormatedBalance(String(pointsByTapCount))}
                 </div>
             ))}
         </div>

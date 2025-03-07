@@ -1,6 +1,7 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { UserStateType, UserType } from '../types';
+import BigNumber from 'bignumber.js';
 
 const userAdapter = createEntityAdapter();
 
@@ -42,6 +43,11 @@ export const userSlice = createSlice({
         setPointsBalance: (state, action: PayloadAction<string>) => {
             state.data.pointsBalance = action.payload;
         },
+        addPointsBalance: (state, action: PayloadAction<string>) => {
+            state.data.pointsBalance = new BigNumber(state.data.pointsBalance)
+                .plus(action.payload)
+                .toString();
+        },
     },
 });
 
@@ -51,6 +57,7 @@ export const {
     setBoostsBalance,
     setCoinsBalance,
     setPointsBalance,
+    addPointsBalance,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(

@@ -13,6 +13,7 @@
     "@telegram-apps/bridge": "^2.4.0",
     "@telegram-apps/sdk-react": "^3.1.2",
     "animate.css": "^4.1.1",
+    "bignumber.js": "^9.1.2",
     "classnames": "^2.5.1",
     "ky": "^1.7.5",
     "next": "15.1.7",

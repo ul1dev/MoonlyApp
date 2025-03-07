@@ -50,8 +50,8 @@ export default function AuthWrapper({ children }: Props) {
     return children;
 }
 
-// СДЕЛАТЬ РЕФЕРАЛКИ
-
 // СДЕЛАТЬ ТАПЫ
+
+// СДЕЛАТЬ РЕФЕРАЛКИ
 
 // СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ
