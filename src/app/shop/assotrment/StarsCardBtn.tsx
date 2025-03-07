@@ -11,12 +11,14 @@ import { useTypedSelector } from '@/app/common/hooks/useTypedSelector';
 import { buyCoinsByStarsRequest } from '@/app/common/api/buyCoinsByStars';
 import { setCoinsBalance } from '@/app/store/reducers/users';
 import { getUserDataByIdRequest } from '@/app/common/api/getUserData';
+import { useTranslate } from '@/app/common/hooks/useTranslate';
 
 export default function StarsCardBtn({ price = '100', numCount = 1 }) {
     const { openModal } = useInfoModal();
     const [loading, setLoading] = useState(false);
     const { data: userData } = useTypedSelector((state) => state.user);
     const dispatch = useDispatch();
+    const { t } = useTranslate();
 
     const windowWidth = useMediaQuery();
     const spinnerSize = windowWidth < 540 ? 20 : 24;
@@ -58,19 +60,10 @@ export default function StarsCardBtn({ price = '100', numCount = 1 }) {
                     );
                 }
             } else {
-                if (locale === 'ru') {
-                    openModal('Оплата не прошла', 'error');
-                } else {
-                    openModal('Payment failed', 'error');
-                }
-                openModal('Оплата не прошла', 'error');
+                openModal(t('errors.paymentFailed'), 'error');
             }
         } catch (e) {
-            if (locale === 'ru') {
-                openModal('Ошибка, попробуйте еще раз', 'error');
-            } else {
-                openModal('Error, try again', 'error');
-            }
+            openModal(t('errors.errorTryAgain'), 'error');
         } finally {
             setLoading(false);
         }

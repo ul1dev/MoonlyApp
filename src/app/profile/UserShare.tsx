@@ -1,5 +1,6 @@
 'use client';
 
+import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
 import InfoModalProvider from '../common/hocs/info-modal';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTranslate } from '../common/hooks/useTranslate';
@@ -33,7 +34,9 @@ export default function UserShare() {
                     <div className="flex max-[380px]:gap-3 max-[440px]:gap-5 gap-[30px]">
                         <div className="text-center">
                             <p className="font-black max-[380px]:text-lg max-[440px]:text-xl max-[680px]:text-2xl text-[28px] text-white">
-                                {data.invitedUsersCount}
+                                {getShortFormatedBalance(
+                                    String(data.invitedUsersCount)
+                                )}
                             </p>
                             <p className="font-semibold text-[#B2B2B2] max-[440px]:text-xs max-[680px]:text-sm text-base">
                                 {t('profile.invitedUsers')}
@@ -41,7 +44,9 @@ export default function UserShare() {
                         </div>
                         <div className="text-center">
                             <p className="font-black max-[380px]:text-lg max-[440px]:text-xl max-[680px]:text-2xl text-[28px] text-white">
-                                {data.invitedUsersCount * 100}
+                                {getShortFormatedBalance(
+                                    String(data.invitedUsersCount * 100)
+                                )}
                             </p>
                             <p className="font-semibold text-[#B2B2B2] max-[440px]:text-xs max-[680px]:text-sm text-base">
                                 {t('profile.receivedCoins')}

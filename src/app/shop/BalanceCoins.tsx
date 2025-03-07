@@ -1,5 +1,6 @@
 'use client';
 
+import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import BoostsIcon from '../common/share/icons/Boosts';
@@ -31,19 +32,25 @@ export default function ShopBalanceCoins() {
     return (
         <div className="flex items-center max-[680px]:gap-3 gap-6">
             <div className="flex gap-[3px] items-center">
-                <p className="text-white font-medium">{data.pointsBalance}</p>
+                <p className="text-white font-medium">
+                    {getShortFormatedBalance(data.pointsBalance)}
+                </p>
                 <div className="max-[680px]:-mt-[1px] -mt-0.5">
                     <PixelPurpleCoinIcon width={iconsSize} height={iconsSize} />
                 </div>
             </div>
             <div className="flex gap-[3px] items-center">
-                <p className="text-white font-medium">{data.coinsBalance}</p>
+                <p className="text-white font-medium">
+                    {getShortFormatedBalance(data.coinsBalance)}
+                </p>
                 <div className="max-[680px]:-mt-[1px] -mt-0.5">
                     <PixelGreenCoinIcon width={iconsSize} height={iconsSize} />
                 </div>
             </div>
             <div className="flex gap-[3px] items-center">
-                <p className="text-white font-medium">{data.boostsBalance}</p>
+                <p className="text-white font-medium">
+                    {getShortFormatedBalance(String(data.boostsBalance))}
+                </p>
                 <div className="max-[680px]:-mt-[1px] -mt-0.5">
                     <BoostsIcon width={boostWidth} height={iconsSize} />
                 </div>

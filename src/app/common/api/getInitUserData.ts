@@ -8,7 +8,7 @@ export const getInitUserDataRequest = async (userData: {
     userName?: string | null;
 }) => {
     try {
-        const data: UserType = await ky
+        const data: { user: UserType } = await ky
             .post(`${process.env.NEXT_PUBLIC_SERVER}/users/init`, {
                 json: userData,
             })

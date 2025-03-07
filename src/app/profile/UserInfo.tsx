@@ -1,5 +1,6 @@
 'use client';
 
+import { slicedContinText } from '../common/assets/slicedContinText';
 import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import ProfileIcon from '../footer/icons/ProfileIcon';
@@ -26,7 +27,7 @@ export default function UserInfo() {
                 className="max-[380px]:text-base max-[440px]:text-lg max-[680px]:text-xl text-2xl text-white max-[440px]:pt-1.5 pt-3"
                 style={{ fontFamily: 'var(--font-rubik-mono-one)' }}
             >
-                {data.userName ?? data.firstName}
+                {slicedContinText(data.userName ?? data.firstName, 20)}
             </div>
         </div>
     );

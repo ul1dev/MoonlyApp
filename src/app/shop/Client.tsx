@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import useIsMobile from '../common/hooks/use-is-mobile';
 import UnscrollWrapper from '../common/hocs/telegram/Unscroll';
 import { useLayoutEffect, useState } from 'react';
-import FullPageLoader from '../scroll';
+import FullPageLoader from '../loader';
 
 import 'simplebar-react/dist/simplebar.min.css';
 import './index.scss';

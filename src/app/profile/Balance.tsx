@@ -7,6 +7,7 @@ import PixelGreenCoinIcon from '../common/share/icons/PixelGreenCoin';
 import PixelPurpleCoinIcon from '../common/share/icons/PixelPurpleCoin';
 import { useTranslate } from '../common/hooks/useTranslate';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
+import { getLongFormatedBalance } from '../common/assets/getLongFormatedBalance';
 
 export default function UserBalance() {
     const { data } = useTypedSelector((state) => state.user);
@@ -40,7 +41,7 @@ export default function UserBalance() {
                     </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">
-                            {data.pointsBalance}
+                            {getLongFormatedBalance(data.pointsBalance, 8)}
                         </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <PixelPurpleCoinIcon
@@ -65,7 +66,7 @@ export default function UserBalance() {
                     </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">
-                            {data.coinsBalance}
+                            {getLongFormatedBalance(data.coinsBalance, 8)}
                         </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <PixelGreenCoinIcon
@@ -90,7 +91,10 @@ export default function UserBalance() {
                     </p>
                     <div className="flex gap-[3px] items-center">
                         <p className="text-white font-bold">
-                            {data.boostsBalance}
+                            {getLongFormatedBalance(
+                                String(data.boostsBalance),
+                                8
+                            )}
                         </p>
                         <div className="max-[680px]:-mt-[1px] -mt-0.5">
                             <BoostsIcon width={boostWidth} height={iconsSize} />

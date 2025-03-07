@@ -1,3 +1,4 @@
+import { errorsTexts } from './errors';
 import { fortuneTexts } from './fortune';
 import { homeTexts } from './home';
 import { infoTexts } from './info';
@@ -15,6 +16,7 @@ export const allTexts: any = {
         profit: profitTexts.ru,
         nft: nftTexts.ru,
         fortune: fortuneTexts.ru,
+        errors: errorsTexts.ru,
     },
     en: {
         info: infoTexts.en,
@@ -24,5 +26,6 @@ export const allTexts: any = {
         profit: profitTexts.en,
         nft: nftTexts.en,
         fortune: fortuneTexts.en,
+        errors: errorsTexts.en,
     },
 };
