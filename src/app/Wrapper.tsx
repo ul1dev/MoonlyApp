@@ -21,5 +21,3 @@ export default function LayoutWrapper({
         </Provider>
     );
 }
-
-// СДЕЛАТЬ ОТОБРАЖЕНИЕ ВСЕХ ЦИФР С СОКРАЩЕНИЕМ И С ПРОБЕЛАМИ В POINTS И ТАК ГДЕ НАДО

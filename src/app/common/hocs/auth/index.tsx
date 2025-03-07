@@ -44,3 +44,9 @@ export default function AuthWrapper({ children }: Props) {
 
     return children;
 }
+
+// СДЕЛАТЬ ОТОБРАЖЕНИЕ ВСЕХ ЦИФР С СОКРАЩЕНИЕМ И С ПРОБЕЛАМИ В POINTS И ТАК ГДЕ НАДО
+
+// СДЕЛАТЬ РЕФЕРАЛКИ
+
+// СДЕЛАТЬ ТАПЫ
