@@ -25,10 +25,14 @@ const clicksSlice = createSlice({
             state.count += state.pendingCount;
             state.pendingCount = 0;
         },
+        sendingSuccessful(state) {
+            state.pendingCount = 0;
+        },
     },
 });
 
-export const { increment, markAsSending, sendingFailed } = clicksSlice.actions;
+export const { increment, markAsSending, sendingFailed, sendingSuccessful } =
+    clicksSlice.actions;
 export const selectClicksCount = (state: { clicks: ClicksState }) =>
     state.clicks.count + state.clicks.pendingCount;
 export default clicksSlice.reducer;

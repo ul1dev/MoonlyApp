@@ -21,6 +21,7 @@ const initialState: UserStateType = {
     },
     loading: true,
     isLoaded: false,
+    isNewLevel: false,
 };
 
 export const userSlice = createSlice({
@@ -48,6 +49,13 @@ export const userSlice = createSlice({
                 .plus(action.payload)
                 .toString();
         },
+        setNewLevel: (state, action: PayloadAction<number>) => {
+            state.data.level = action.payload;
+            state.isNewLevel = true;
+        },
+        resetIsNewLevel: (state) => {
+            state.isNewLevel = false;
+        },
     },
 });
 
@@ -58,6 +66,8 @@ export const {
     setCoinsBalance,
     setPointsBalance,
     addPointsBalance,
+    setNewLevel,
+    resetIsNewLevel,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(

@@ -16,6 +16,7 @@ export interface UserStateType {
     data: UserType;
     loading: boolean;
     isLoaded: boolean;
+    isNewLevel: boolean;
 }
 
 export interface TelegramStateType {

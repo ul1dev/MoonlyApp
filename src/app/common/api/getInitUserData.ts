@@ -6,6 +6,7 @@ export const getInitUserDataRequest = async (userData: {
     firstName?: string;
     lastName?: string | null;
     userName?: string | null;
+    referralId?: string | null;
 }) => {
     try {
         const data: { user: UserType } = await ky

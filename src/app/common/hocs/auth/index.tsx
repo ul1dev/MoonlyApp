@@ -3,7 +3,11 @@ import { useEffect, ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getInitUserDataRequest } from '../../api/getInitUserData';
-import { initDataUser } from '@telegram-apps/sdk-react';
+import {
+    initData,
+    initDataStartParam,
+    initDataUser,
+} from '@telegram-apps/sdk-react';
 import FullPageLoader from '@/app/loader';
 import FullPageError from '@/app/error';
 
@@ -23,13 +27,25 @@ export default function AuthWrapper({ children }: Props) {
     }, [isTmaMounted]);
 
     async function setData() {
+        const starsParam = initDataStartParam();
         const userData = initDataUser();
+
+        let referralId: string | null = null;
+
+        if (starsParam) {
+            for (let paramItem of starsParam.split('__')) {
+                if (paramItem.includes('ref')) {
+                    referralId = paramItem.split('_')[1];
+                }
+            }
+        }
 
         const initUserData = await getInitUserDataRequest({
             telegramId: String(userData?.id),
             firstName: userData?.first_name,
             lastName: userData?.last_name,
             userName: userData?.username,
+            referralId,
         });
 
         if (initUserData?.user) {
@@ -50,8 +66,8 @@ export default function AuthWrapper({ children }: Props) {
     return children;
 }
 
-// СДЕЛАТЬ ТАПЫ
-
-// СДЕЛАТЬ РЕФЕРАЛКИ
+// СДЕЛАТЬ РЕФЕРАЛКИ (просто всплывашку где можно копировать ссылку и qr-код)
 
 // СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ
+
+// СДЕЛАТЬ ВСПЛЫВАШКУ НОВЫЙ ЛЕВЕЛ при изменении isNewLevel и после закрытия этой плашки вызывать  dispatch(resetIsNewLevel());
