@@ -44,6 +44,7 @@ export default function TelegramWrapper({
             if (!miniApp.isMounted()) {
                 await miniApp.mount();
                 miniApp.setBottomBarColor('#000000');
+                miniApp.setBackgroundColor('#000000');
                 miniApp.setHeaderColor('#000000');
             }
 
