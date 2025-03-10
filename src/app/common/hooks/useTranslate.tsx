@@ -12,7 +12,7 @@ export const useTranslate = () => {
     }, []);
 
     const t = useCallback(
-        (path: string) => {
+        (path: string, variables?: Record<string, any>) => {
             const keys = path.split('.');
             let current: any = allTexts[lang];
 
@@ -22,6 +22,15 @@ export const useTranslate = () => {
                 }
                 current = current[key];
             }
+
+            if (typeof current === 'string' && variables) {
+                current = current.replace(/{(\w+)}/g, (match, key) => {
+                    return variables.hasOwnProperty(key)
+                        ? variables[key].toString()
+                        : match;
+                });
+            }
+
             return current;
         },
         [lang]

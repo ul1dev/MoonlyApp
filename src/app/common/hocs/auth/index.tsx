@@ -69,7 +69,3 @@ export default function AuthWrapper({ children }: Props) {
 
     return children;
 }
-
-// СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ (при изменении afkPointsCount и после закрытия этой плашки вызывать  dispatch(resetAfkPointsCount());)
-
-// СДЕЛАТЬ ВСПЛЫВАШКУ НОВЫЙ ЛЕВЕЛ (при изменении isNewLevel и после закрытия этой плашки вызывать  dispatch(resetIsNewLevel());)

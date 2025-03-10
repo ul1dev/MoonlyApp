@@ -8,6 +8,7 @@ import CloseIcon from '../common/share/icons/Close';
 import { useScaledIconSize } from '../common/hooks/useScaledIconSize';
 import { QRCodeSVG } from 'qrcode.react';
 import Link from 'next/link';
+import { useMediaQuery } from '../common/hooks/use-media-query';
 
 interface Props {
     setIsShareModalClosing: Function;
@@ -24,6 +25,7 @@ export default function ShareModal({
     const { t } = useTranslate();
     const getScaledSize = useScaledIconSize();
     const { openModal } = useInfoModal();
+    const windowWidth = useMediaQuery();
 
     const closeSize = getScaledSize(18, 16);
 
@@ -69,7 +71,7 @@ export default function ShareModal({
                                   ? 'animate__fadeOutDown'
                                   : 'animate__fadeInUp'
                           }
-                          animate__animated animate__faster text-white
+                          animate__animated animate__faster text-white flex flex-col items-center
                         `}
             >
                 <div className="flex justify-between w-full items-center">
@@ -89,7 +91,7 @@ export default function ShareModal({
                 <div className="py-7">
                     <QRCodeSVG
                         value={shareUserLink}
-                        size={320}
+                        size={windowWidth > 340 ? 320 : 300}
                         includeMargin={true}
                         marginSize={2}
                         className="rounded-lg"
@@ -103,7 +105,7 @@ export default function ShareModal({
                     />
                 </div>
 
-                <div className="flex flex-col gap-5 font-medium">
+                <div className="flex flex-col gap-5 font-medium w-full">
                     <Link href={`https://t.me/share/url?url=${shareUserLink}`}>
                         <button className="bg-[#525252] py-2 px-3 rounded-lg w-full">
                             {t('share.send')}

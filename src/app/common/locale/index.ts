@@ -1,7 +1,9 @@
+import { afkPointsTexts } from './afk-points';
 import { errorsTexts } from './errors';
 import { fortuneTexts } from './fortune';
 import { homeTexts } from './home';
 import { infoTexts } from './info';
+import { newLevelTexts } from './new-level';
 import { nftTexts } from './nft';
 import { profileTexts } from './profile';
 import { profitTexts } from './profit';
@@ -19,6 +21,8 @@ export const allTexts: any = {
         fortune: fortuneTexts.ru,
         errors: errorsTexts.ru,
         share: shareTexts.ru,
+        newLevel: newLevelTexts.ru,
+        afkPoints: afkPointsTexts.ru,
     },
     en: {
         info: infoTexts.en,
@@ -30,5 +34,7 @@ export const allTexts: any = {
         fortune: fortuneTexts.en,
         errors: errorsTexts.en,
         share: shareTexts.en,
+        newLevel: newLevelTexts.en,
+        afkPoints: afkPointsTexts.en,
     },
 };

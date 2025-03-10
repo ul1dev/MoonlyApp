@@ -5,6 +5,7 @@ import StarsBackground from './common/hocs/stars-bg';
 import TelegramWrapper from './common/hocs/telegram';
 import store from './store';
 import AuthWrapper from './common/hocs/auth';
+import ModalsWrapper from './common/hocs/modals';
 
 export default function LayoutWrapper({
     children,
@@ -15,7 +16,9 @@ export default function LayoutWrapper({
         <Provider store={store}>
             <StarsBackground>
                 <TelegramWrapper>
-                    <AuthWrapper>{children}</AuthWrapper>
+                    <AuthWrapper>
+                        <ModalsWrapper>{children}</ModalsWrapper>
+                    </AuthWrapper>
                 </TelegramWrapper>
             </StarsBackground>
         </Provider>
