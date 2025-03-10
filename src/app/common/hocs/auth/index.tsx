@@ -7,11 +7,7 @@ import { useEffect, ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getInitUserDataRequest } from '../../api/getInitUserData';
-import {
-    initData,
-    initDataStartParam,
-    initDataUser,
-} from '@telegram-apps/sdk-react';
+import { initDataStartParam, initDataUser } from '@telegram-apps/sdk-react';
 import FullPageLoader from '@/app/loader';
 import FullPageError from '@/app/error';
 
@@ -73,8 +69,6 @@ export default function AuthWrapper({ children }: Props) {
 
     return children;
 }
-
-// СДЕЛАТЬ РЕФЕРАЛКИ (просто всплывашку где можно копировать ссылку и qr-код)
 
 // СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ (при изменении afkPointsCount и после закрытия этой плашки вызывать  dispatch(resetAfkPointsCount());)
 

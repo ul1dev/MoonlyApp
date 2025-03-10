@@ -7,38 +7,29 @@ import HomeIcon from './icons/HomeIcon';
 import CoinsIcon from './icons/CoinsIcon';
 import ProfileIcon from './icons/ProfileIcon';
 import { usePathname } from 'next/navigation';
-import { useMediaQuery } from '../common/hooks/use-media-query';
 import classNames from 'classnames';
 import useIsMobile from '../common/hooks/use-is-mobile';
+import { useScaledIconSize } from '../common/hooks/useScaledIconSize';
 
 export default function Footer() {
     const pathname = usePathname();
-    const windowWidth = useMediaQuery();
-
+    const getScaledSize = useScaledIconSize();
     const isMobile = useIsMobile();
 
-    const BASE_WIDTH = 768;
+    const nftWidth = getScaledSize(47, 30);
+    const nftHeight = getScaledSize(50, 30);
 
-    const scaleFactor = Math.min(1, windowWidth / BASE_WIDTH);
+    const shopWidth = getScaledSize(50, 30);
+    const shopHeight = getScaledSize(42, 30);
 
-    const getScaledSize = (originalSize: number) => {
-        return Math.max(30, originalSize * scaleFactor);
-    };
+    const homeWidth = getScaledSize(45, 30);
+    const homeHeight = getScaledSize(45, 30);
 
-    const nftWidth = getScaledSize(47);
-    const nftHeight = getScaledSize(50);
+    const coinsWidth = getScaledSize(50, 30);
+    const coinsHeight = getScaledSize(50, 30);
 
-    const shopWidth = getScaledSize(50);
-    const shopHeight = getScaledSize(42);
-
-    const homeWidth = getScaledSize(45);
-    const homeHeight = getScaledSize(45);
-
-    const coinsWidth = getScaledSize(50);
-    const coinsHeight = getScaledSize(50);
-
-    const profileWidth = getScaledSize(48);
-    const profileHeight = getScaledSize(48);
+    const profileWidth = getScaledSize(48, 30);
+    const profileHeight = getScaledSize(48, 30);
 
     return (
         <div className="fixed bottom-0 left-0 w-full">

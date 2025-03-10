@@ -5,6 +5,7 @@ import { infoTexts } from './info';
 import { nftTexts } from './nft';
 import { profileTexts } from './profile';
 import { profitTexts } from './profit';
+import { shareTexts } from './share';
 import { shopTexts } from './shop';
 
 export const allTexts: any = {
@@ -17,6 +18,7 @@ export const allTexts: any = {
         nft: nftTexts.ru,
         fortune: fortuneTexts.ru,
         errors: errorsTexts.ru,
+        share: shareTexts.ru,
     },
     en: {
         info: infoTexts.en,
@@ -27,5 +29,6 @@ export const allTexts: any = {
         nft: nftTexts.en,
         fortune: fortuneTexts.en,
         errors: errorsTexts.en,
+        share: shareTexts.en,
     },
 };

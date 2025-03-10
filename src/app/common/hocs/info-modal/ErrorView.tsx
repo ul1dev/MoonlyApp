@@ -32,10 +32,10 @@ export default function ErrorModalView({
     return (
         <div
             className={classNames(
-                'fixed inset-0 z-[10000] w-fit h-fit top-10 mx-auto px-2',
+                'fixed inset-0 z-[10000] w-fit h-fit mx-auto px-2',
                 {
-                    'top-10': !isMobile,
-                    'top-32': isMobile,
+                    'top-5': !isMobile,
+                    'top-28': isMobile,
                 }
             )}
         >

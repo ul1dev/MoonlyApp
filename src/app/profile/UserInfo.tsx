@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { slicedContinText } from '../common/assets/slicedContinText';
-import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import ProfileIcon from '../footer/icons/ProfileIcon';
 import Image from 'next/image';
 import { initDataUser } from '@telegram-apps/sdk-react';
+import { useScaledIconSize } from '../common/hooks/useScaledIconSize';
 
 export default function UserInfo() {
     const { data } = useTypedSelector((state) => state.user);
-    const windowWidth = useMediaQuery();
     const { isTmaMounted } = useTypedSelector((state) => state.telegram);
     const [userPhotoUrl, setUserPhotoUrl] = useState<null | string>(null);
+    const getScaledSize = useScaledIconSize();
 
     useEffect(() => {
         if (isTmaMounted) {
@@ -23,15 +23,7 @@ export default function UserInfo() {
         }
     }, [isTmaMounted]);
 
-    const BASE_WIDTH = 768;
-
-    const scaleFactor = Math.min(1, windowWidth / BASE_WIDTH);
-
-    const getScaledSize = (originalSize: number) => {
-        return Math.max(80, originalSize * scaleFactor);
-    };
-
-    const profileSize = getScaledSize(130);
+    const profileSize = getScaledSize(130, 80);
 
     return (
         <div className="flex flex-col items-center max-[440px]:pb-8 pt-20 pb-12">

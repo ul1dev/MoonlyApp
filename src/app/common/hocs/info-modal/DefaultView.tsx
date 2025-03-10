@@ -4,6 +4,7 @@ import { MouseEventHandler } from 'react';
 import InfoIcon from '../../share/icons/Info';
 import { useMediaQuery } from '../../hooks/use-media-query';
 import CloseIcon from '../../share/icons/Close';
+import { useScaledIconSize } from '../../hooks/useScaledIconSize';
 
 interface Props {
     handleBackdropClick: MouseEventHandler<HTMLDivElement>;
@@ -18,15 +19,7 @@ export default function DefaultModalView({
     isClosing,
     modalText,
 }: Props) {
-    const windowWidth = useMediaQuery();
-
-    const BASE_WIDTH = 768;
-
-    const scaleFactor = Math.min(1, windowWidth / BASE_WIDTH);
-
-    const getScaledSize = (originalSize: number, minSize: number) => {
-        return Math.max(minSize, originalSize * scaleFactor);
-    };
+    const getScaledSize = useScaledIconSize();
 
     const infoSize = getScaledSize(35, 30);
     const closeSize = getScaledSize(18, 16);

@@ -2,26 +2,18 @@
 
 import classNames from 'classnames';
 import { getLongFormatedBalance } from '../common/assets/getLongFormatedBalance';
-import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import PixelCoinIcon from '../common/share/icons/PixelPurpleCoin';
 import useIsMobile from '../common/hooks/use-is-mobile';
+import { useScaledIconSize } from '../common/hooks/useScaledIconSize';
 
 export default function ScoreBar() {
     const { data } = useTypedSelector((state) => state.user);
-    const windowWidth = useMediaQuery();
     const isMobile = useIsMobile();
+    const getScaledSize = useScaledIconSize();
 
-    const BASE_WIDTH = 768;
-
-    const scaleFactor = Math.min(1, windowWidth / BASE_WIDTH);
-
-    const getScaledSize = (originalSize: number) => {
-        return Math.max(30, originalSize * scaleFactor);
-    };
-
-    const pixelCoinWidth = getScaledSize(50);
-    const pixelCoinHeight = getScaledSize(50);
+    const pixelCoinWidth = getScaledSize(50, 30);
+    const pixelCoinHeight = getScaledSize(50, 30);
 
     return (
         <div

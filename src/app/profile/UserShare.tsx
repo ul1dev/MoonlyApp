@@ -1,27 +1,23 @@
 'use client';
 
+import { useState } from 'react';
 import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
 import InfoModalProvider from '../common/hocs/info-modal';
-import { useMediaQuery } from '../common/hooks/use-media-query';
 import { useTranslate } from '../common/hooks/useTranslate';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import ShareIcon from './icons/Share';
 import UserShareFriendsInfo from './UserShareFriendsInfo';
+import { useScaledIconSize } from '../common/hooks/useScaledIconSize';
+import ShareModal from './ShareModal';
 
 export default function UserShare() {
     const { data } = useTypedSelector((state) => state.user);
-    const windowWidth = useMediaQuery();
     const { t } = useTranslate();
+    const [isOpenShareModal, setIsOpenShareModal] = useState(false);
+    const [isShareModalClosing, setIsShareModalClosing] = useState(false);
+    const getScaledSize = useScaledIconSize();
 
-    const BASE_WIDTH = 768;
-
-    const scaleFactor = Math.min(1, windowWidth / BASE_WIDTH);
-
-    const getScaledSize = (originalSize: number) => {
-        return Math.max(40, originalSize * scaleFactor);
-    };
-
-    const iconsSize = getScaledSize(65);
+    const iconsSize = getScaledSize(65, 40);
 
     return (
         <InfoModalProvider>
@@ -31,7 +27,7 @@ export default function UserShare() {
                 <div className="relative flex justify-between items-center max-[380px]:px-4 p-6">
                     <UserShareFriendsInfo />
 
-                    <div className="flex max-[380px]:gap-3 max-[440px]:gap-5 gap-[30px]">
+                    <div className="flex max-[440px]:gap-3 gap-[30px]">
                         <div className="text-center">
                             <p className="font-black max-[380px]:text-lg max-[440px]:text-xl max-[680px]:text-2xl text-[28px] text-white">
                                 {getShortFormatedBalance(
@@ -53,11 +49,22 @@ export default function UserShare() {
                             </p>
                         </div>
                     </div>
-                    <div className="cursor-pointer">
+                    <div
+                        className="cursor-pointer"
+                        onClick={() => setIsOpenShareModal(true)}
+                    >
                         <ShareIcon width={iconsSize} height={iconsSize} />
                     </div>
                 </div>
             </div>
+
+            {isOpenShareModal && (
+                <ShareModal
+                    setIsShareModalClosing={setIsShareModalClosing}
+                    setIsOpenShareModal={setIsOpenShareModal}
+                    isShareModalClosing={isShareModalClosing}
+                />
+            )}
         </InfoModalProvider>
     );
 }
