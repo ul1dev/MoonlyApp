@@ -1,4 +1,8 @@
-import { setLoading, setUserData } from '@/app/store/reducers/users';
+import {
+    setAfkPointsCount,
+    setLoading,
+    setUserData,
+} from '@/app/store/reducers/users';
 import { useEffect, ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -52,6 +56,10 @@ export default function AuthWrapper({ children }: Props) {
             dispatch(setUserData(initUserData.user));
         }
 
+        if (initUserData?.afkPointsCount && initUserData?.afkPointsCount > 0) {
+            dispatch(setAfkPointsCount(initUserData.afkPointsCount));
+        }
+
         dispatch(setLoading(false));
     }
 
@@ -68,6 +76,6 @@ export default function AuthWrapper({ children }: Props) {
 
 // СДЕЛАТЬ РЕФЕРАЛКИ (просто всплывашку где можно копировать ссылку и qr-код)
 
-// СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ
+// СДЕЛАТЬ ПОЛУЧАЕНИЕ ОЧКОВ ЗА АФК ПРИ ЗАХОДЕ (при изменении afkPointsCount и после закрытия этой плашки вызывать  dispatch(resetAfkPointsCount());)
 
-// СДЕЛАТЬ ВСПЛЫВАШКУ НОВЫЙ ЛЕВЕЛ при изменении isNewLevel и после закрытия этой плашки вызывать  dispatch(resetIsNewLevel());
+// СДЕЛАТЬ ВСПЛЫВАШКУ НОВЫЙ ЛЕВЕЛ (при изменении isNewLevel и после закрытия этой плашки вызывать  dispatch(resetIsNewLevel());)

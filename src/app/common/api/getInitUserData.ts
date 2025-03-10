@@ -9,7 +9,7 @@ export const getInitUserDataRequest = async (userData: {
     referralId?: string | null;
 }) => {
     try {
-        const data: { user: UserType } = await ky
+        const data: { user: UserType; afkPointsCount: number } = await ky
             .post(`${process.env.NEXT_PUBLIC_SERVER}/users/init`, {
                 json: userData,
             })

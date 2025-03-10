@@ -17,6 +17,7 @@ export interface UserStateType {
     loading: boolean;
     isLoaded: boolean;
     isNewLevel: boolean;
+    afkPointsCount: number;
 }
 
 export interface TelegramStateType {

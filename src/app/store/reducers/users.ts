@@ -22,6 +22,7 @@ const initialState: UserStateType = {
     loading: true,
     isLoaded: false,
     isNewLevel: false,
+    afkPointsCount: 0,
 };
 
 export const userSlice = createSlice({
@@ -56,6 +57,12 @@ export const userSlice = createSlice({
         resetIsNewLevel: (state) => {
             state.isNewLevel = false;
         },
+        setAfkPointsCount: (state, action: PayloadAction<number>) => {
+            state.afkPointsCount = action.payload;
+        },
+        resetAfkPointsCount: (state) => {
+            state.afkPointsCount = 0;
+        },
     },
 });
 
@@ -68,6 +75,8 @@ export const {
     addPointsBalance,
     setNewLevel,
     resetIsNewLevel,
+    setAfkPointsCount,
+    resetAfkPointsCount,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(
