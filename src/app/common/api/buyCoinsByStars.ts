@@ -1,11 +1,11 @@
-import ky from 'ky';
+import api from './client';
 
 export const buyCoinsByStarsRequest = async (reqData: {
     userId: string;
     count: number;
 }) => {
     try {
-        const data = await ky
+        const data = await api
             .post(`${process.env.NEXT_PUBLIC_SERVER}/coins/buy/stars`, {
                 json: reqData,
             })

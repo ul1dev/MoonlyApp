@@ -6,6 +6,7 @@ import TelegramWrapper from './common/hocs/telegram';
 import store from './store';
 import AuthWrapper from './common/hocs/auth';
 import ModalsWrapper from './common/hocs/modals';
+import NeedMobileWrapper from './common/hocs/need-mobile';
 
 export default function LayoutWrapper({
     children,
@@ -15,11 +16,13 @@ export default function LayoutWrapper({
     return (
         <Provider store={store}>
             <StarsBackground>
-                <TelegramWrapper>
-                    <AuthWrapper>
-                        <ModalsWrapper>{children}</ModalsWrapper>
-                    </AuthWrapper>
-                </TelegramWrapper>
+                <NeedMobileWrapper>
+                    <TelegramWrapper>
+                        <AuthWrapper>
+                            <ModalsWrapper>{children}</ModalsWrapper>
+                        </AuthWrapper>
+                    </TelegramWrapper>
+                </NeedMobileWrapper>
             </StarsBackground>
         </Provider>
     );

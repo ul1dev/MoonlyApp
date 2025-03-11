@@ -1,5 +1,5 @@
 import { UserType } from '@/app/store/types';
-import ky from 'ky';
+import api from './client';
 
 export const getInitUserDataRequest = async (userData: {
     telegramId: string;
@@ -9,7 +9,7 @@ export const getInitUserDataRequest = async (userData: {
     referralId?: string | null;
 }) => {
     try {
-        const data: { user: UserType; afkPointsCount: number } = await ky
+        const data: { user: UserType; afkPointsCount: number } = await api
             .post(`${process.env.NEXT_PUBLIC_SERVER}/users/init`, {
                 json: userData,
             })

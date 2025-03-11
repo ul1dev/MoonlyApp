@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import { useTranslate } from '../common/hooks/useTranslate';
-import useIsMobile from '../common/hooks/use-is-mobile';
 import classNames from 'classnames';
+import useIsMobile from '../../hooks/use-is-mobile';
+import { useTranslate } from '../../hooks/useTranslate';
+import Image from 'next/image';
 
-export default function FullPageError() {
+export default function NeedMobileView() {
     const { t } = useTranslate();
     const isMobile = useIsMobile();
 
@@ -15,8 +15,8 @@ export default function FullPageError() {
         <div className="w-full h-full flex justify-center items-center">
             <div className="flex flex-col items-center">
                 <Image
-                    src="https://em-content.zobj.net/source/telegram/386/crying-face_1f622.webp"
-                    alt="Crying emoji"
+                    src="https://em-content.zobj.net/source/telegram/386/mobile-phone_1f4f1.webp"
+                    alt="Iphone emoji"
                     width={imgSize}
                     height={imgSize}
                 />
@@ -29,7 +29,7 @@ export default function FullPageError() {
                         }
                     )}
                 >
-                    {t('errors.error')}
+                    {t('needPhone.title')}
                 </p>
             </div>
         </div>

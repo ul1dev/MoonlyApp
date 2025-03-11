@@ -1,4 +1,4 @@
-import ky from 'ky';
+import api from './client';
 
 export const sendTapsRequest = async (reqData: {
     userId: string;
@@ -9,7 +9,7 @@ export const sendTapsRequest = async (reqData: {
             pointsBalance: string;
             userLevel: number;
             isNewLevel: boolean;
-        } = await ky
+        } = await api
             .post(`${process.env.NEXT_PUBLIC_SERVER}/points/add-farmed`, {
                 json: reqData,
                 keepalive: true,
