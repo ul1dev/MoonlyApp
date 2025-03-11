@@ -21,7 +21,7 @@ export default function EnergyBar() {
             })}
         >
             <div
-                className="bg-[#1D1D1D] rounded-lg w-full min-w-80 max-w-3xl max-sm:mx-8 mx-12 px-3 py-2"
+                className="bg-[#1D1D1D] rounded-lg w-full min-w-80 max-w-3xl max-[400px]:mx-4 max-sm:mx-8 mx-12 px-3 py-2"
                 onClick={() => openModal(t('info.energy'))}
             >
                 <div className="flex justify-between text-sm">
