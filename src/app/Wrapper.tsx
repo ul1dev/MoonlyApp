@@ -7,12 +7,19 @@ import store from './store';
 import AuthWrapper from './common/hocs/auth';
 import ModalsWrapper from './common/hocs/modals';
 import NeedMobileWrapper from './common/hocs/need-mobile';
+import { useEffect } from 'react';
 
 export default function LayoutWrapper({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    useEffect(() => {
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+    }, []);
+
     return (
         <Provider store={store}>
             <StarsBackground>
