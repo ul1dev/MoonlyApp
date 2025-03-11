@@ -28,6 +28,10 @@ export default function ModalsWrapper({ children }: Props) {
             }
         }, 1000);
 
+        if (userData.energy === 10000) {
+            clearInterval(interval);
+        }
+
         return () => clearInterval(interval);
     }, [userData.energy]);
 
