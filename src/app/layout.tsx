@@ -27,6 +27,7 @@ const rubikMonoOne = Rubik_Mono_One({
     weight: '400',
     variable: '--font-rubik-mono-one',
     display: 'swap',
+    subsets: ['cyrillic', 'latin'],
 });
 
 export const metadata = {

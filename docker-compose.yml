@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    phishes:
+        build: ./
+        container_name: 'coinappclient'
+        image: ulidev/coinappclient
+
+        restart: always
+
+        ports:
+            - '3000:3000'
