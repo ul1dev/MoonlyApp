@@ -23,7 +23,7 @@ export default function ScoreBar() {
         >
             <PixelCoinIcon width={pixelCoinWidth} height={pixelCoinHeight} />
             <div
-                className="max-[340px]:text-2xl max-[500px]:text-3xl max-[680px]:text-4xl text-5xl text-white font-normal"
+                className="max-[340px]:text-2xl max-[500px]:text-3xl max-[680px]:text-4xl text-5xl text-white font-normal select-none"
                 style={{ fontFamily: 'var(--font-rubik-one)' }}
             >
                 {getLongFormatedBalance(data.pointsBalance, 15)}
