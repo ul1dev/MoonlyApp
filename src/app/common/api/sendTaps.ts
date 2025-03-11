@@ -7,6 +7,7 @@ export const sendTapsRequest = async (reqData: {
     try {
         const data: {
             pointsBalance: string;
+            userEnergy: number;
             userLevel: number;
             isNewLevel: boolean;
         } = await api
