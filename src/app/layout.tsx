@@ -42,6 +42,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+                />
+            </head>
+
             <body
                 className={`${inter.variable} ${rubikOne.variable} ${rubikMonoOne.variable} min-w-80 max-w-3xl mx-auto`}
                 style={{ overflow: 'hidden' }}
