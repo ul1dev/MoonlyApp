@@ -15,6 +15,8 @@ export const useAutoSaveClicks = () => {
     const totalClicks: number = useSelector(selectClicksCount);
     const { data: userData } = useTypedSelector((state) => state.user);
 
+    // попробовать сделать чтобы сохранялось еще и пока кликаешь!!!!!!!!!!!!!!!!
+
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const isSendingRef = useRef(false);
     const clicksRef = useRef(totalClicks);

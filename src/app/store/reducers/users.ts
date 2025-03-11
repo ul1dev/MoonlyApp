@@ -17,6 +17,7 @@ const initialState: UserStateType = {
         coinsBalance: '0',
         boostsBalance: 0,
         level: 1,
+        energy: 10000,
         invitedUsersCount: 0,
     },
     loading: true,
@@ -63,6 +64,12 @@ export const userSlice = createSlice({
         resetAfkPointsCount: (state) => {
             state.afkPointsCount = 0;
         },
+        incEnergy: (state, action: PayloadAction<number>) => {
+            state.data.energy += action.payload;
+        },
+        decEnergy: (state, action: PayloadAction<number>) => {
+            state.data.energy -= action.payload;
+        },
     },
 });
 
@@ -77,6 +84,8 @@ export const {
     resetIsNewLevel,
     setAfkPointsCount,
     resetAfkPointsCount,
+    incEnergy,
+    decEnergy,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(

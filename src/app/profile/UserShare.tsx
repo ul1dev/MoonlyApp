@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
-import InfoModalProvider from '../common/hocs/info-modal';
 import { useTranslate } from '../common/hooks/useTranslate';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import ShareIcon from './icons/Share';
@@ -20,7 +19,7 @@ export default function UserShare() {
     const iconsSize = getScaledSize(65, 40);
 
     return (
-        <InfoModalProvider>
+        <>
             <div className="relative max-[380px]:mx-2 max-[440px]:mx-3 mx-5 my-8">
                 <div className="bg-[#4e4e4e]/25 blur-[2px] absolute top-0 left-0 w-full h-full rounded-2xl"></div>
 
@@ -65,6 +64,6 @@ export default function UserShare() {
                     isShareModalClosing={isShareModalClosing}
                 />
             )}
-        </InfoModalProvider>
+        </>
     );
 }

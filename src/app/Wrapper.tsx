@@ -8,6 +8,7 @@ import AuthWrapper from './common/hocs/auth';
 import ModalsWrapper from './common/hocs/modals';
 import NeedMobileWrapper from './common/hocs/need-mobile';
 import { useEffect } from 'react';
+import InfoModalProvider from './common/hocs/info-modal';
 
 export default function LayoutWrapper({
     children,
@@ -26,7 +27,11 @@ export default function LayoutWrapper({
                 <NeedMobileWrapper>
                     <TelegramWrapper>
                         <AuthWrapper>
-                            <ModalsWrapper>{children}</ModalsWrapper>
+                            <ModalsWrapper>
+                                <InfoModalProvider>
+                                    {children}
+                                </InfoModalProvider>
+                            </ModalsWrapper>
                         </AuthWrapper>
                     </TelegramWrapper>
                 </NeedMobileWrapper>

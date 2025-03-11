@@ -9,6 +9,7 @@ export interface UserType {
     coinsBalance: string;
     boostsBalance: number;
     level: number;
+    energy: number;
     invitedUsersCount: number;
 }
 

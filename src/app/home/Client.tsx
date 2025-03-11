@@ -7,6 +7,7 @@ import ClickPad from '../home/ClickPad';
 import classNames from 'classnames';
 import useIsMobile from '../common/hooks/use-is-mobile';
 import UnscrollWrapper from '../common/hocs/telegram/Unscroll';
+import EnergyBar from './Energy';
 
 export default function HomeClient() {
     const isMobile = useIsMobile();
@@ -18,6 +19,7 @@ export default function HomeClient() {
                     'pt-20': isMobile,
                 })}
             >
+                <EnergyBar />
                 <PointsBar />
                 <ScoreBar />
                 <ClickPad />

@@ -9,8 +9,7 @@ import {
     MouseEvent,
 } from 'react';
 import DefaultModalView from './DefaultView';
-import SuccessModalView from './SuccessView';
-import ErrorModalView from './ErrorView';
+import AlertModalView from './AlertView';
 
 type ModalTypes = 'default' | 'success' | 'error';
 
@@ -92,25 +91,18 @@ export default function InfoModalProvider({
                 />
             )}
 
-            {currentModal && currentModal.type === 'success' && (
-                <SuccessModalView
-                    handleBackdropClick={handleBackdropClick}
-                    closeModal={closeModal}
-                    isClosing={currentModal.isClosing}
-                    modalText={currentModal.text}
-                    modalId={currentModal.id}
-                />
-            )}
-
-            {currentModal && currentModal.type === 'error' && (
-                <ErrorModalView
-                    handleBackdropClick={handleBackdropClick}
-                    closeModal={closeModal}
-                    isClosing={currentModal.isClosing}
-                    modalText={currentModal.text}
-                    modalId={currentModal.id}
-                />
-            )}
+            {currentModal &&
+                ['success', 'error'].includes(currentModal.type) && (
+                    <AlertModalView
+                        handleBackdropClick={handleBackdropClick}
+                        closeModal={closeModal}
+                        isClosing={currentModal.isClosing}
+                        modalText={currentModal.text}
+                        modalId={currentModal.id}
+                        // @ts-ignore
+                        type={currentModal.type}
+                    />
+                )}
         </ModalContext.Provider>
     );
 }

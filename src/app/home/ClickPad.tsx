@@ -5,17 +5,25 @@ import { useMediaQuery } from '../common/hooks/use-media-query';
 import BigMoonlyCoin from './icons/BigMoonlyCoin';
 import { hapticFeedback } from '@telegram-apps/sdk-react';
 import { useDispatch } from 'react-redux';
-import { addPointsBalance } from '../store/reducers/users';
+import { addPointsBalance, decEnergy } from '../store/reducers/users';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
 import { increment } from '../store/reducers/clicks';
 import { useAutoSaveClicks } from '../common/hooks/use-auto-save-clicks';
+import classNames from 'classnames';
+import { useInfoModal } from '../common/hocs/info-modal';
+import { useTranslate } from '../common/hooks/useTranslate';
 
 export default function ClickPad() {
     const [clicks, setClicks] = useState<any[]>([]);
     const windowWidth = useMediaQuery();
     const dispatch = useDispatch();
     const { data: userData } = useTypedSelector((state) => state.user);
+    const [isClickActive, setIsClickActive] = useState(false);
+    const [activeClickTimeout, setActiveClickTimeout] =
+        useState<NodeJS.Timeout | null>(null);
+    const { openModal } = useInfoModal();
+    const { t } = useTranslate();
 
     useAutoSaveClicks();
 
@@ -41,8 +49,11 @@ export default function ClickPad() {
         clientY: number,
         currentTarget: EventTarget
     ) => {
+        if (!userData.energy) return;
+
         dispatch(addPointsBalance(String(pointsByTapCount)));
         dispatch(increment());
+        dispatch(decEnergy(1));
 
         const rect = (currentTarget as HTMLElement).getBoundingClientRect();
 
@@ -63,14 +74,30 @@ export default function ClickPad() {
         }
     };
 
-    const handleClick = (e: React.MouseEvent) => {
-        if ((e.target as HTMLElement).closest('.click-effect')) return;
+    // const handleClick = (e: React.MouseEvent) => {
+    //     if (!userData.energy) return;
 
-        const { clientX, clientY, currentTarget } = e;
-        processInteraction(clientX, clientY, currentTarget);
-    };
+    //     if ((e.target as HTMLElement).closest('.click-effect')) return;
+
+    //     const { clientX, clientY, currentTarget } = e;
+    //     processInteraction(clientX, clientY, currentTarget);
+    // };
+
+    function startAnimation() {
+        setIsClickActive(true);
+
+        const currTimeout = setTimeout(() => {
+            setIsClickActive(false);
+            setActiveClickTimeout(null);
+        }, 500);
+        setActiveClickTimeout(currTimeout);
+    }
 
     const handleTouch = (e: React.TouchEvent) => {
+        if (!userData.energy) {
+            return openModal(t('home.energyRestore'), 'error');
+        }
+
         if ((e.target as HTMLElement).closest('.click-effect')) return;
 
         const touchEvent = e.nativeEvent;
@@ -87,15 +114,29 @@ export default function ClickPad() {
             clientY = touchEvent.changedTouches[0].clientY;
         }
 
+        if (activeClickTimeout) {
+            setTimeout(() => {
+                clearTimeout(activeClickTimeout);
+                setActiveClickTimeout(null);
+                setIsClickActive(false);
+            }, 150);
+            setTimeout(startAnimation, 100);
+        } else {
+            startAnimation();
+        }
+
         processInteraction(clientX, clientY, currentTarget);
     };
 
     return (
         <div
-            className="pt-6 mx-auto cursor-pointer relative"
+            className={classNames('mt-6 mx-auto cursor-pointer relative', {
+                'animate__animated animate__headShake': isClickActive,
+            })}
             style={{
                 width: coinSize,
                 height: coinSize,
+                animationDuration: '0.5s',
             }}
             onTouchStart={handleTouch}
         >
