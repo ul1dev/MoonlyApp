@@ -19,10 +19,10 @@ export default function HomeClient() {
                     'pt-20': isMobile,
                 })}
             >
-                <EnergyBar />
                 <PointsBar />
                 <ScoreBar />
                 <ClickPad />
+                <EnergyBar />
             </div>
         </UnscrollWrapper>
     );
