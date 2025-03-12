@@ -5,21 +5,55 @@ import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import { useTranslate } from '../common/hooks/useTranslate';
 import useIsMobile from '../common/hooks/use-is-mobile';
 import classNames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
 
 export default function EnergyBar() {
     const { openModal } = useInfoModal();
     const { t } = useTranslate();
     const { data: userData } = useTypedSelector((state) => state.user);
     const isMobile = useIsMobile();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [startY, setStartY] = useState<number>(0);
 
     const openInfoModal = () => openModal(t('info.energy'));
 
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const handleTouchStart = (e: TouchEvent) => {
+            setStartY(e.touches[0].clientY);
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            const currentY = e.touches[0].clientY;
+            const deltaY = currentY - startY;
+
+            if (deltaY >= 1) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+
+        container.addEventListener('touchstart', handleTouchStart);
+        container.addEventListener('touchmove', handleTouchMove, {
+            passive: false,
+        });
+
+        return () => {
+            container.removeEventListener('touchstart', handleTouchStart);
+            container.removeEventListener('touchmove', handleTouchMove);
+        };
+    }, [startY]);
+
     return (
         <div
+            ref={containerRef}
             className={classNames('fixed left-0 w-full', {
                 'bottom-28': isMobile,
                 'bottom-16 min-[540px]:bottom-20': !isMobile,
             })}
+            style={{ touchAction: 'pan-x' }}
         >
             <div className="w-full min-w-80 max-w-3xl mx-auto">
                 <div
