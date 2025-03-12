@@ -4,7 +4,7 @@ import {
     sendingFailed,
     sendingSuccessful,
 } from '@/app/store/reducers/clicks';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendTapsRequest } from '../api/sendTaps';
 import { useTypedSelector } from './useTypedSelector';
@@ -15,10 +15,9 @@ export const useAutoSaveClicks = () => {
     const totalClicks: number = useSelector(selectClicksCount);
     const { data: userData } = useTypedSelector((state) => state.user);
 
-    // попробовать сделать чтобы сохранялось еще и пока кликаешь!!!!!!!!!!!!!!!!
-
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const isSendingRef = useRef(false);
+    const isAsyncSendingRef = useRef(false);
     const clicksRef = useRef(totalClicks);
     const isMountedRef = useRef(true);
 
@@ -81,4 +80,15 @@ export const useAutoSaveClicks = () => {
             }
         };
     }, [saveClicks]);
+
+    useEffect(() => {
+        if (!isAsyncSendingRef.current) {
+            isAsyncSendingRef.current = true;
+
+            setTimeout(async () => {
+                await saveClicks();
+                isAsyncSendingRef.current = false;
+            }, 5000);
+        }
+    }, [totalClicks]);
 };
