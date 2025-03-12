@@ -6,6 +6,8 @@ export const getInitUserDataRequest = async (userData: {
     firstName?: string;
     lastName?: string | null;
     userName?: string | null;
+    ip?: string | null;
+    userAgent?: string | null;
     referralId?: string | null;
 }) => {
     try {

@@ -40,11 +40,24 @@ export default function AuthWrapper({ children }: Props) {
             }
         }
 
+        let ip;
+        let userAgent;
+
+        try {
+            const userInfoRes = await fetch('/api/user-info');
+
+            const { ip: userIp, userAgent: userUA } = await userInfoRes.json();
+            ip = userIp;
+            userAgent = userUA;
+        } catch (e) {}
+
         const initUserData = await getInitUserDataRequest({
             telegramId: String(userData?.id),
             firstName: userData?.first_name,
             lastName: userData?.last_name,
             userName: userData?.username,
+            ip,
+            userAgent,
             referralId,
         });
 

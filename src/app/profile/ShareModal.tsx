@@ -107,7 +107,10 @@ export default function ShareModal({
 
                 <div className="flex flex-col gap-5 font-medium w-full">
                     <Link href={`https://t.me/share/url?url=${shareUserLink}`}>
-                        <button className="bg-[#525252] py-2 px-3 rounded-lg w-full">
+                        <button
+                            className="bg-[#525252] py-2 px-3 rounded-lg w-full"
+                            onClick={closeModal}
+                        >
                             {t('share.send')}
                         </button>
                     </Link>
