@@ -24,8 +24,8 @@ export default function LayoutWrapper({
     return (
         <Provider store={store}>
             <StarsBackground>
-                <NeedMobileWrapper>
-                    <TelegramWrapper>
+                <TelegramWrapper>
+                    <NeedMobileWrapper>
                         <AuthWrapper>
                             <ModalsWrapper>
                                 <InfoModalProvider>
@@ -33,8 +33,8 @@ export default function LayoutWrapper({
                                 </InfoModalProvider>
                             </ModalsWrapper>
                         </AuthWrapper>
-                    </TelegramWrapper>
-                </NeedMobileWrapper>
+                    </NeedMobileWrapper>
+                </TelegramWrapper>
             </StarsBackground>
         </Provider>
     );
