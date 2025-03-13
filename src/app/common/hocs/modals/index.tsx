@@ -43,43 +43,61 @@ export default function ModalsWrapper({ children }: Props) {
         return () => clearInterval(interval);
     }, [userData.energy]);
 
+    const tutorItems: {
+        localStorageTitle: string;
+        itemTitle: TeachModalsType;
+    }[] = [
+        {
+            localStorageTitle: 'isOpenedMainGoalTutor',
+            itemTitle: 'mainGoal',
+        },
+        {
+            localStorageTitle: 'isOpenedInvitesTutor',
+            itemTitle: 'invites',
+        },
+        {
+            localStorageTitle: 'isOpenedBuyBoostsTutor',
+            itemTitle: 'buyBoosts',
+        },
+        {
+            localStorageTitle: 'isOpenedSybscribeTutor',
+            itemTitle: 'subscribe',
+        },
+    ];
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (isNewLevel || afkPointsCount > 0 || teachOpenedModal) return;
+        let needIntervalCount = 0;
 
-            const items: {
-                localStorageTitle: string;
-                itemTitle: TeachModalsType;
-            }[] = [
-                {
-                    localStorageTitle: 'isOpenedMainGoalTutor',
-                    itemTitle: 'mainGoal',
-                },
-                {
-                    localStorageTitle: 'isOpenedInvitesTutor',
-                    itemTitle: 'invites',
-                },
-                {
-                    localStorageTitle: 'isOpenedBuyBoostsTutor',
-                    itemTitle: 'buyBoosts',
-                },
-                {
-                    localStorageTitle: 'isOpenedSybscribeTutor',
-                    itemTitle: 'subscribe',
-                },
-            ];
+        for (let { localStorageTitle } of tutorItems) {
+            const isOpened = localStorage.getItem(localStorageTitle);
 
-            for (let { localStorageTitle, itemTitle } of items) {
-                const isOpened = localStorage.getItem(localStorageTitle);
-
-                if (!isOpened) {
-                    return setTeachOpenedModal(itemTitle);
-                }
+            if (!isOpened) {
+                needIntervalCount++;
             }
-        }, 15000);
+        }
 
-        return () => clearInterval(interval);
+        if (needIntervalCount) {
+            setTimeout(checkTutors, 2000);
+        }
+
+        if (needIntervalCount > 1) {
+            const interval = setInterval(checkTutors, 15000);
+
+            return () => clearInterval(interval);
+        }
     }, []);
+
+    function checkTutors() {
+        if (isNewLevel || afkPointsCount > 0 || teachOpenedModal) return;
+
+        for (let { localStorageTitle, itemTitle } of tutorItems) {
+            const isOpened = localStorage.getItem(localStorageTitle);
+
+            if (!isOpened) {
+                return setTeachOpenedModal(itemTitle);
+            }
+        }
+    }
 
     const closeParentModalHandler = (itemTitle: string) => {
         setTeachOpenedModal(null);
