@@ -1,24 +1,24 @@
 'use client';
 
 import { MouseEvent, useState } from 'react';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useTranslate } from '../../hooks/useTranslate';
-import { useDispatch } from 'react-redux';
-import { resetIsNewLevel } from '@/app/store/reducers/users';
-import { getShortFormatedBalance } from '../../assets/getShortFormatedBalance';
+import TeachIcon from '../../share/icons/Teach';
+import Link from 'next/link';
 
-export default function NewLevelModal() {
-    const { data } = useTypedSelector((state) => state.user);
+interface Props {
+    closeParentModal: Function;
+}
+
+export default function SubscribeModal({ closeParentModal }: Props) {
     const { t } = useTranslate();
     const [isModalClosing, setIsModalClosing] = useState(false);
-    const dispatch = useDispatch();
 
     const closeModal = () => {
         setIsModalClosing(true);
 
         setTimeout(() => {
-            dispatch(resetIsNewLevel());
             setIsModalClosing(false);
+            closeParentModal();
         }, 500);
     };
 
@@ -28,7 +28,7 @@ export default function NewLevelModal() {
         }
     };
 
-    const levelView = getShortFormatedBalance(String(data.level));
+    const iconSize = 45;
 
     return (
         <div
@@ -46,24 +46,22 @@ export default function NewLevelModal() {
                           animate__animated animate__faster text-white flex flex-col items-center
                         `}
             >
-                <h3 className="text-xl font-medium">
-                    {t('newLevel.newLevel')}
+                <div>
+                    <TeachIcon width={iconSize} height={iconSize} />
+                </div>
+
+                <h3 className="text-xl text-[#ffffff] font-medium pt-5 pb-7 text-center">
+                    {t('tutorials.needSubscribe')}
                 </h3>
 
-                <h2 className="text-7xl font-black my-8 [text-shadow:_0px_0px_50px_rgb(169_129_255_/_1.00)]">
-                    {levelView}
-                </h2>
-
-                <p className="text-xs text-[#b5b5b5] text-center pb-2">
-                    {t('newLevel.willGet', { level: levelView })}
-                </p>
-
-                <button
-                    className="bg-[#7E69AB] p-3 font-semibold text-xl rounded-lg w-full"
-                    onClick={closeModal}
-                >
-                    {t('newLevel.great')}
-                </button>
+                <Link href="https://t.me/moonly_coin" className="w-full">
+                    <button
+                        className="bg-[#7E69AB] p-3 font-semibold text-xl rounded-lg w-full"
+                        onClick={closeModal}
+                    >
+                        {t('tutorials.subscribe')}
+                    </button>
+                </Link>
             </div>
         </div>
     );

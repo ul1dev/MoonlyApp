@@ -27,11 +27,9 @@ export default function LayoutWrapper({
                 <TelegramWrapper>
                     <NeedMobileWrapper>
                         <AuthWrapper>
-                            <ModalsWrapper>
-                                <InfoModalProvider>
-                                    {children}
-                                </InfoModalProvider>
-                            </ModalsWrapper>
+                            <InfoModalProvider>
+                                <ModalsWrapper>{children}</ModalsWrapper>
+                            </InfoModalProvider>
                         </AuthWrapper>
                     </NeedMobileWrapper>
                 </TelegramWrapper>

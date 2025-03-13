@@ -10,6 +10,7 @@ import { profileTexts } from './profile';
 import { profitTexts } from './profit';
 import { shareTexts } from './share';
 import { shopTexts } from './shop';
+import { tutorialsTexts } from './tutorials';
 
 export const allTexts: any = {
     ru: {
@@ -25,6 +26,7 @@ export const allTexts: any = {
         newLevel: newLevelTexts.ru,
         afkPoints: afkPointsTexts.ru,
         needPhone: needPhoneTexts.ru,
+        tutorials: tutorialsTexts.ru,
     },
     en: {
         info: infoTexts.en,
@@ -39,5 +41,6 @@ export const allTexts: any = {
         newLevel: newLevelTexts.en,
         afkPoints: afkPointsTexts.en,
         needPhone: needPhoneTexts.en,
+        tutorials: tutorialsTexts.en,
     },
 };

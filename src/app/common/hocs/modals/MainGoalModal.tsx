@@ -1,25 +1,23 @@
 'use client';
 
 import { MouseEvent, useState } from 'react';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useTranslate } from '../../hooks/useTranslate';
-import { useDispatch } from 'react-redux';
-import { resetAfkPointsCount } from '@/app/store/reducers/users';
-import PixelPurpleCoinIcon from '../../share/icons/PixelPurpleCoin';
-import { getShortFormatedBalance } from '../../assets/getShortFormatedBalance';
+import TeachIcon from '../../share/icons/Teach';
 
-export default function AfkPointsModal() {
-    const { afkPointsCount } = useTypedSelector((state) => state.user);
+interface Props {
+    closeParentModal: Function;
+}
+
+export default function MainGoalModal({ closeParentModal }: Props) {
     const { t } = useTranslate();
     const [isModalClosing, setIsModalClosing] = useState(false);
-    const dispatch = useDispatch();
 
     const closeModal = () => {
         setIsModalClosing(true);
 
         setTimeout(() => {
-            dispatch(resetAfkPointsCount());
             setIsModalClosing(false);
+            closeParentModal();
         }, 500);
     };
 
@@ -29,7 +27,7 @@ export default function AfkPointsModal() {
         }
     };
 
-    const pointsCount = getShortFormatedBalance(String(afkPointsCount));
+    const iconSize = 45;
 
     return (
         <div
@@ -47,26 +45,19 @@ export default function AfkPointsModal() {
                           animate__animated animate__faster text-white flex flex-col items-center
                         `}
             >
-                <h3 className="text-xl font-medium">{t('afkPoints.title')}</h3>
-
-                <div className="flex items-center gap-2 my-10 -ml-5">
-                    <PixelPurpleCoinIcon width={60} height={60} />
-                    <h2 className="text-7xl font-black [text-shadow:_0px_0px_50px_rgb(169_129_255_/_1.00)]">
-                        {pointsCount}
-                    </h2>
+                <div>
+                    <TeachIcon width={iconSize} height={iconSize} />
                 </div>
 
-                <p className="text-xs text-[#b5b5b5] text-center pb-2">
-                    {t('afkPoints.youGot', {
-                        points: pointsCount,
-                    })}
-                </p>
+                <h3 className="text-xl text-[#ffffff] font-medium pt-5 pb-7 text-center">
+                    {t('tutorials.mainGoal')}
+                </h3>
 
                 <button
                     className="bg-[#7E69AB] p-3 font-semibold text-xl rounded-lg w-full"
                     onClick={closeModal}
                 >
-                    {t('afkPoints.great')}
+                    {t('tutorials.okay')}
                 </button>
             </div>
         </div>
