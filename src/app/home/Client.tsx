@@ -15,7 +15,7 @@ export default function HomeClient() {
     return (
         <UnscrollWrapper>
             <div
-                className={classNames('pb-36', {
+                className={classNames('pb-36 select-none', {
                     'pt-20': isMobile,
                 })}
             >
