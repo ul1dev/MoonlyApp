@@ -6,6 +6,7 @@ export const shopTexts = {
         coins: 'Coins',
         points: 'Points',
         stars: 'Stars',
+        energy: 'Energy',
     },
     ru: {
         topUp: 'Пополнить',
@@ -14,5 +15,6 @@ export const shopTexts = {
         coins: 'Коины',
         points: 'Поинты',
         stars: 'Звёзды',
+        energy: 'Энергия',
     },
 };

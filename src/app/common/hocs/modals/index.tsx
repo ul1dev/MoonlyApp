@@ -27,16 +27,12 @@ export default function ModalsWrapper({ children }: Props) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (userData.energy < 10000) {
-                if (userData.energy >= 9997) {
-                    dispatch(incEnergy(10000 - userData.energy));
-                } else {
-                    dispatch(incEnergy(3));
-                }
+            if (userData.energy < 1000) {
+                dispatch(incEnergy(1));
             }
-        }, 1000);
+        }, 3600);
 
-        if (userData.energy === 10000) {
+        if (userData.energy === 1000) {
             clearInterval(interval);
         }
 

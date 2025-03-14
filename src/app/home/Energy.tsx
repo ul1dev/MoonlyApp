@@ -62,13 +62,20 @@ export default function EnergyBar() {
                 >
                     <div className="flex justify-between text-sm">
                         <p className="text-[#B2B2B2]">{t('home.energy')}</p>
-                        <p className="text-white">{userData.energy}/10000</p>
+                        <p className="text-white">
+                            {userData.energy}/{userData.maxEnergy}
+                        </p>
                     </div>
-                    <div className="relative mt-2">
-                        <div className="w-full h-2 bg-[#4E4E4E] rounded-full"></div>
+                    <div className="relative mt-2 rounded-[100px] overflow-hidden">
+                        <div className="w-full h-2 bg-[#4E4E4E] rounded-[100px]"></div>
                         <div
-                            className="h-2 bg-[#DEE3E7] rounded-full absolute top-0 left-0"
-                            style={{ width: `${userData.energy / 100}%` }}
+                            className="h-2 bg-[#DEE3E7] rounded-[100px] absolute top-0 left-0"
+                            style={{
+                                width: `${(
+                                    (userData.energy / userData.maxEnergy) *
+                                    100
+                                ).toFixed(2)}%`,
+                            }}
                         ></div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ export interface UserType {
     boostsBalance: number;
     level: number;
     energy: number;
+    maxEnergy: number;
     invitedUsersCount: number;
 }
 

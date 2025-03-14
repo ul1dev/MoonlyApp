@@ -17,7 +17,8 @@ const initialState: UserStateType = {
         coinsBalance: '0',
         boostsBalance: 0,
         level: 1,
-        energy: 10000,
+        energy: 1000,
+        maxEnergy: 1000,
         invitedUsersCount: 0,
     },
     loading: true,
@@ -70,6 +71,12 @@ export const userSlice = createSlice({
         decEnergy: (state, action: PayloadAction<number>) => {
             state.data.energy -= action.payload;
         },
+        setEnergy: (state, action: PayloadAction<number>) => {
+            state.data.energy = action.payload;
+        },
+        setMaxEnergy: (state, action: PayloadAction<number>) => {
+            state.data.maxEnergy = action.payload;
+        },
     },
 });
 
@@ -86,6 +93,8 @@ export const {
     resetAfkPointsCount,
     incEnergy,
     decEnergy,
+    setEnergy,
+    setMaxEnergy,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(
