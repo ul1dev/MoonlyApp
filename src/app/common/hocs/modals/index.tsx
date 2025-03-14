@@ -81,7 +81,7 @@ export default function ModalsWrapper({ children }: Props) {
         }
 
         if (needIntervalCount > 1) {
-            const interval = setInterval(checkTutors, 10000);
+            const interval = setInterval(checkTutors, 180000);
 
             return () => clearInterval(interval);
         }
