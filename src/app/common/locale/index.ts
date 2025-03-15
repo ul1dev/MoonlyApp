@@ -3,6 +3,7 @@ import { errorsTexts } from './errors';
 import { fortuneTexts } from './fortune';
 import { homeTexts } from './home';
 import { infoTexts } from './info';
+import { lowEnergyTexts } from './low-energy';
 import { needPhoneTexts } from './need-phone';
 import { newLevelTexts } from './new-level';
 import { nftTexts } from './nft';
@@ -27,6 +28,7 @@ export const allTexts: any = {
         afkPoints: afkPointsTexts.ru,
         needPhone: needPhoneTexts.ru,
         tutorials: tutorialsTexts.ru,
+        lowEnergy: lowEnergyTexts.ru,
     },
     en: {
         info: infoTexts.en,
@@ -42,5 +44,6 @@ export const allTexts: any = {
         afkPoints: afkPointsTexts.en,
         needPhone: needPhoneTexts.en,
         tutorials: tutorialsTexts.en,
+        lowEnergy: lowEnergyTexts.en,
     },
 };

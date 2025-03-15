@@ -19,6 +19,7 @@ export interface UserStateType {
     loading: boolean;
     isLoaded: boolean;
     isNewLevel: boolean;
+    isEnergyLowModal: boolean;
     afkPointsCount: number;
 }
 

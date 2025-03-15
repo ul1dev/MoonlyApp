@@ -8,6 +8,7 @@ import MainGoalModal from './MainGoalModal';
 import InvitesModal from './InvitesModal';
 import BuyBoostsModal from './BuyBoostsModal';
 import SubscribeModal from './SubscribeModal';
+import LowEnergyModal from './LowEnergyModal';
 
 interface Props {
     children: ReactNode;
@@ -18,6 +19,7 @@ type TeachModalsType = 'mainGoal' | 'invites' | 'buyBoosts' | 'subscribe';
 export default function ModalsWrapper({ children }: Props) {
     const {
         isNewLevel,
+        isEnergyLowModal,
         afkPointsCount,
         data: userData,
     } = useTypedSelector((state) => state.user);
@@ -84,7 +86,13 @@ export default function ModalsWrapper({ children }: Props) {
     }, []);
 
     function checkTutors() {
-        if (isNewLevel || afkPointsCount > 0 || teachOpenedModal) return;
+        if (
+            isEnergyLowModal ||
+            isNewLevel ||
+            afkPointsCount > 0 ||
+            teachOpenedModal
+        )
+            return;
 
         for (let { localStorageTitle, itemTitle } of tutorItems) {
             const isOpened = localStorage.getItem(localStorageTitle);
@@ -135,6 +143,8 @@ export default function ModalsWrapper({ children }: Props) {
                     }
                 />
             )}
+
+            {isEnergyLowModal && <LowEnergyModal />}
 
             {isNewLevel && <NewLevelModal />}
 

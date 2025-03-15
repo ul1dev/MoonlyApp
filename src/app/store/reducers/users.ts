@@ -24,6 +24,7 @@ const initialState: UserStateType = {
     loading: true,
     isLoaded: false,
     isNewLevel: false,
+    isEnergyLowModal: false,
     afkPointsCount: 0,
 };
 
@@ -77,6 +78,9 @@ export const userSlice = createSlice({
         setMaxEnergy: (state, action: PayloadAction<number>) => {
             state.data.maxEnergy = action.payload;
         },
+        setIsEnergyLowModal: (state, action: PayloadAction<boolean>) => {
+            state.isEnergyLowModal = action.payload;
+        },
     },
 });
 
@@ -95,6 +99,7 @@ export const {
     decEnergy,
     setEnergy,
     setMaxEnergy,
+    setIsEnergyLowModal,
 } = userSlice.actions;
 
 export const { selectAll } = userAdapter.getSelectors(

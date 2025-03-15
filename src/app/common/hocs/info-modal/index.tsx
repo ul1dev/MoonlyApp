@@ -14,7 +14,11 @@ import AlertModalView from './AlertView';
 type ModalTypes = 'default' | 'success' | 'error';
 
 interface ModalContextType {
-    openModal: (text: string, type?: ModalTypes) => void;
+    openModal: (
+        text: string,
+        type?: ModalTypes,
+        isResetState?: boolean
+    ) => void;
     closeModal: () => void;
 }
 
@@ -44,14 +48,23 @@ export default function InfoModalProvider({
     const [modals, setModals] = useState<ModalData[]>([]);
     const idCounter = useRef(0);
 
-    const openModal = (text: string, type: ModalTypes = 'default') => {
+    const openModal = (
+        text: string,
+        type: ModalTypes = 'default',
+        isResetState = false
+    ) => {
         const newModal: ModalData = {
             id: idCounter.current++,
             text,
             type,
             isClosing: false,
         };
-        setModals((prev) => [...prev, newModal]);
+
+        if (isResetState) {
+            setModals([newModal]);
+        } else {
+            setModals((prev) => [...prev, newModal]);
+        }
     };
 
     const closeModalById = (id: number) => {

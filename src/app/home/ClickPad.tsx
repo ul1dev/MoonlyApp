@@ -5,14 +5,16 @@ import { useMediaQuery } from '../common/hooks/use-media-query';
 import BigMoonlyCoin from './icons/BigMoonlyCoin';
 import { hapticFeedback } from '@telegram-apps/sdk-react';
 import { useDispatch } from 'react-redux';
-import { addPointsBalance, decEnergy } from '../store/reducers/users';
+import {
+    addPointsBalance,
+    decEnergy,
+    setIsEnergyLowModal,
+} from '../store/reducers/users';
 import { useTypedSelector } from '../common/hooks/useTypedSelector';
 import { getShortFormatedBalance } from '../common/assets/getShortFormatedBalance';
 import { increment } from '../store/reducers/clicks';
 import { useAutoSaveClicks } from '../common/hooks/use-auto-save-clicks';
 import classNames from 'classnames';
-import { useInfoModal } from '../common/hocs/info-modal';
-import { useTranslate } from '../common/hooks/useTranslate';
 
 export default function ClickPad() {
     const [clicks, setClicks] = useState<any[]>([]);
@@ -22,8 +24,6 @@ export default function ClickPad() {
     const [isClickActive, setIsClickActive] = useState(false);
     const [activeClickTimeout, setActiveClickTimeout] =
         useState<NodeJS.Timeout | null>(null);
-    const { openModal } = useInfoModal();
-    const { t } = useTranslate();
 
     useAutoSaveClicks();
 
@@ -75,7 +75,9 @@ export default function ClickPad() {
     };
 
     // const handleClick = (e: React.MouseEvent) => {
-    //     if (!userData.energy) return;
+    //     if (!userData.energy) {
+    //         return dispatch(setIsEnergyLowModal(true));
+    //     }
 
     //     if ((e.target as HTMLElement).closest('.click-effect')) return;
 
@@ -95,7 +97,7 @@ export default function ClickPad() {
 
     const handleTouch = (e: React.TouchEvent) => {
         if (!userData.energy) {
-            return openModal(t('home.energyRestore'), 'error');
+            return dispatch(setIsEnergyLowModal(true));
         }
 
         if ((e.target as HTMLElement).closest('.click-effect')) return;
